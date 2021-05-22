@@ -25,7 +25,7 @@ async def rename_filter(c,m):
     
   text += "Select the desired Option"
   button.append([InlineKeyboardButton("Rename as File", callback_data="rename_file")])
-  if media.mime_type.startswith("video/")
+  if media.mime_type.startswith("video/"):
     ## how the f the other formats can be uploaded as video 
     button.append([InlineKeyboardButton("Rename as Video",callback_data="rename_video")])
     button.append([InlineKeyboardButton("Convert as File",callback_data="convert_file")])
