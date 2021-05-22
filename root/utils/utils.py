@@ -114,8 +114,7 @@ async def take_screen_shot(video_file, output_directory, ttl):
     t_response = stdout.decode().strip()
     if os.path.lexists(out_put_file_name):
         return out_put_file_name
-    else:
-        return None
+    return None
 
 async def copy_file(input_file, output_dir):
     output_file = os.path.join(
