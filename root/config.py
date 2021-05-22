@@ -13,7 +13,7 @@ class Config (Object):
   BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
   AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "").split())
   DOWNLOAD_LOCATION = "./bot/DOWNLOADS"
-  DB_URI = environ.get("DATABASE_URL", "")
+  DB_URI = os.environ.get("DATABASE_URL", "")
   # owner is for log cmd only owner can use (this can be multiple users)
-  OWNER = [int(i) for i in environ.get("OWNER", "").split(" ")]
-  
+  OWNER_ID = [int(i) for i in environ.get("OWNER_ID", "").split(" ")]
+  OWNER_USERNAME = os.environ.get("DATABASE_URL", "")
