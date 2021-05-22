@@ -155,5 +155,5 @@ async def cult_small_video(video_file, out_put_file_name, start_time, end_time):
     stdout, stderr = await process.communicate()
     e_response = stderr.decode().strip()
     t_response = stdout.decode().strip()
-    LOGGER.info(t_response)
+    logger.info(t_response)
     return out_put_file_name
