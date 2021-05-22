@@ -11,7 +11,9 @@ from root.utils.utils import *
 import asyncio
 
 
-@Client.on_callback_query(filters.regex('^rename'))
+@Client.on_callback_query(
+    filters.create(lambda _, __, query: query.data.startswith("rename"))
+)
 async def rename_call(c,m):
   if m.data=="rename_file":
     mode = "File"
@@ -93,12 +95,17 @@ async def renamer(c,m,as_file=False):
   
   
 
-@Client.on_callback_query(filters.regex('^closeme'))
+@Client.on_callback_query(
+    filters.create(lambda _, __, query: query.data.startswith("cancel"))
+)
+
 async def cancel_call(c,m):
    await m.message.delete()
 
 
-@Client.on_callback_query(filters.regex('^convert'))
+@Client.on_callback_query(
+    filters.create(lambda _, __, query: query.data.startswith("convert"))
+)
 async def convert_call(c,m):
   usr_msg = m.message.reply_to_message
   d_msg = await m.message.edit_text("Downloading File")
