@@ -93,7 +93,7 @@ async def renamer(c,m,as_file=False):
   except Exception as er:
     print(er)
   await u_msg.delete()
-  await usr_msg.reply_text("Uploaded Successfully...",quote=True)
+  await m.reply_text("Uploaded Successfully...",quote=True)
   
   
 
