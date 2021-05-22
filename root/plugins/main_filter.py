@@ -25,7 +25,6 @@ async def rename_filter(c,m):
   except:
     # some files dont gib name ..
     filename = None 
-    pass
     
   text += "Select the desired Option"
   button.append([InlineKeyboardButton("Rename as File", callback_data="rename_file")])

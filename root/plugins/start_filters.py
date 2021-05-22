@@ -25,7 +25,6 @@ async def help_user(c,m):
        await m.reply_text(Translation.HELP_USER,quote=True)
     except Exception as e:
         log.info(str(e))
-        pass
         
 @Client.on_message(filters.command("start"))
 async def start_msg(c,m):
