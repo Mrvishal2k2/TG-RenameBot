@@ -37,7 +37,7 @@ if __name__ == "__main__" :
     plugins = dict(
         root="root/plugins"
     )
-    BOT = pyrogram.Client(
+    app = pyrogram.Client(
         "RenameBot",
         bot_token=Config.TG_BOT_TOKEN,
         api_id=Config.APP_ID,
@@ -45,4 +45,4 @@ if __name__ == "__main__" :
         plugins=plugins
     )
     log.info("<<[Bot Started]>>")
-    BOT.run()
+    app.run()
