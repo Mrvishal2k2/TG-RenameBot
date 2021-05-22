@@ -49,7 +49,8 @@ async def renamer(c,m,as_file=False):
   new_f_name = m.text # new name
   media = todown.document or todown.video or todown.audio or todown.voice or todown.video_note or todown.animation
   try:
-    extension = media.file_name.split()[-1]
+    media_name = media.file_name
+    extension = media_name.split()[-1]
   except:
     extension = "mkv"
     pass
@@ -64,7 +65,7 @@ async def renamer(c,m,as_file=False):
       file_name=d_location,
       progress=progress_for_pyrogram,
       progress_args=(
-                "Downloading..{media_name}",
+                f"Downloading..{media_name}",
                 d_msg,
                 d_time
             )
@@ -74,7 +75,7 @@ async def renamer(c,m,as_file=False):
   if downloaded_file is None:
     await d_msg.edit_text("Download Failed")
     return
-  new_file_name = download_location + new_f_name + "." + extension
+  new_file_name = d_location + new_f_name + "." + extension
   os.rename(downloaded_file,new_file_name)
   try:
     await d_msg.delete()
@@ -98,7 +99,6 @@ async def renamer(c,m,as_file=False):
 @Client.on_callback_query(
     filters.create(lambda _, __, query: query.data.startswith("cancel"))
 )
-
 async def cancel_call(c,m):
    await m.message.delete()
 
