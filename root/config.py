@@ -16,4 +16,4 @@ class Config (Object):
   DB_URI = os.environ.get("DATABASE_URL", "")
   # owner is for log cmd only owner can use (this can be multiple users)
   OWNER_ID = [int(i) for i in environ.get("OWNER_ID", "").split(" ")]
-  OWNER_USERNAME = os.environ.get("DATABASE_URL", "")
+  OWNER_USERNAME = os.environ.get("OWNER_USERNAME", "BotDunia")
