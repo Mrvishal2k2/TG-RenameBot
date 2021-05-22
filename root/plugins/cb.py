@@ -6,8 +6,9 @@ Dont kang !!!
 '''
 import pyrogram
 from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup,ForceReply
 from root.utils.utils import *
+import asyncio
 
 
 @Client.on_callback_query(filters.regex('^rename$'))
