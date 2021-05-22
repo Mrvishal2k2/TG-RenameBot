@@ -11,7 +11,6 @@ import requests
 import asyncio
 from shutil import copyfile
 from root.config import Config
-from transmsg import Translation
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 
