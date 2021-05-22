@@ -90,7 +90,7 @@ async def renamer(c,m,as_file=False):
      else:
        await uploader(c,new_file_name,m,u_msg)
   except Exception as er:
-    print(e)
+    print(er)
   await u_msg.delete()
   await usr_msg.reply_text("Uploaded Successfully...",quote=True)
   
@@ -140,7 +140,7 @@ async def convert_call(c,m):
      else:
        await uploader(c,downloaded_file,usr_msg,u_msg)
   except Exception as er:
-    print(e)
+    print(er)
   await u_msg.delete()
   await usr_msg.reply_text("Uploaded Successfully...",quote=True)
   
