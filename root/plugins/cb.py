@@ -95,6 +95,7 @@ async def renamer(c,m,as_file=False):
 
 @Client.on_callback_query(filters.regex('^closeme'))
 async def cancel_call(c,m):
+   await m.message.delete()
 
 
 @Client.on_callback_query(filters.regex('^convert'))
