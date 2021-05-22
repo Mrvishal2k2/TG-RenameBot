@@ -23,7 +23,7 @@ async def rename_call(c,m):
     text=f"Mode: {mode} \nNow send me new file name without extension",
     chat_id=m.message.chat.id,
     reply_to_message_id=m.message.reply_to_message.message_id,
-    reply_markup=ForceReply(True))
+    reply_markup=ForceReply(True)
     )
 
 @Client.on_message(filters.private & filters.reply & filters.text)
