@@ -1,9 +1,11 @@
-# RenameBot
-# Thanks to Spechide Unkle as always for the concept  ♥️
-# This file is a part of mrvishal2k2 rename repo 
-# Dont kang !!!
-# © Mrvishal2k2
-
+'''
+RenameBot
+Thanks to Spechide Unkle as always for the concept  ♥️
+This file is a part of mrvishal2k2 rename repo 
+Dont kang !!!
+© Mrvishal2k2
+'''
+import os
 import logging
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
