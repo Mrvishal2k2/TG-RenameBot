@@ -1,8 +1,10 @@
-# RenameBot
-# Thanks to Spechide Unkle as always fot the concept  ♥️
-# This file is a part of mrvishal2k2 rename repo 
-# Dont kang !!!
-# © Mrvishal2k2
+'''
+RenameBot
+Thanks to Spechide Unkle as always fot the concept  ♥️
+This file is a part of mrvishal2k2 rename repo 
+Dont kang !!!
+© Mrvishal2k2
+'''
 
 import logging
 logging.basicConfig(level=logging.DEBUG,
@@ -66,7 +68,7 @@ async def show_thumbnail(c,m):
 
     if not os.path.exists(thumb_image_path):
         mes = await thumb(m.from_user.id)
-        if mes != None:
+        if mes is not None:
             msggg = await c.get_messages(m.chat.id, mes.msg_id)
             await msgg.download(file_name=thumb_image_path)
             thumb_image_path = thumb_image_path
