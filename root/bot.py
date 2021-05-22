@@ -7,6 +7,7 @@ import logging
 import os
 from config import Config
 from logging.handlers import RotatingFileHandler
+from pyrogram import Client
 
 if os.path.exists("Log.txt"):
     with open("Log.txt", "r+") as f_d:
