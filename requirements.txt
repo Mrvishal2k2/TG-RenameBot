@@ -1,0 +1,15 @@
+requests
+
+# to get thumb...
+hachoir
+numpy
+Pillow
+
+# to run bot
+pyrogram
+tgcrypto
+
+# for database 😕
+sqlalchemy==1.3.20
+psycopg2-binary
+feedparser
