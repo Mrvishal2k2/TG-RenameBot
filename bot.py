@@ -5,7 +5,7 @@
 
 import logging
 import os
-from config import Config
+from root.config import Config
 from logging.handlers import RotatingFileHandler
 from pyrogram import Client
 
