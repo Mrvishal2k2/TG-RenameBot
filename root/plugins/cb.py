@@ -11,7 +11,7 @@ from root.utils.utils import *
 
 
 @Client.on_callback_query(filters.regex('^rename$'))
-async rename_call(c,m):
+async def rename_call(c,m):
   if m.data=="rename_file":
     mode = "File"
   elif m.data == "rename_video":
@@ -95,7 +95,7 @@ async def renamer(c,m,as_file=False):
 
 
 @Client.on_callback_query(filters.regex('^convert$'))
-async convert_call(c,m):
+async def convert_call(c,m):
   usr_msg = m.message.reply_to_message
   d_msg = await m.message.edit_text("Downloading File")
   d_location = Config.DOWNLOAD_LOCATION + "/" + str(m.from_user.id) + "/"
