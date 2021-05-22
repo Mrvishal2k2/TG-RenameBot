@@ -32,7 +32,7 @@ async def rep_rename_call(c, m):
     get_mode = str(m.reply_to_message.text).splitlines()[0].split(" ")[1]
     if (m.reply_to_message.reply_markup) and isinstance(m.reply_to_message.reply_markup, ForceReply):
       if get_mode == "File":
-        asyncio.create_task(renamer(c, m,as_file=True)     
+        asyncio.create_task(renamer(c, m,as_file=True))   
       else:
         asyncio.create_task(renamer(c, m))
     else:
