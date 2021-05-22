@@ -152,7 +152,6 @@ async def uploader(bot,file, update, msg,as_file=False):
             except FloodWait as e:
                 logger.info("Got Floodwait of {e.x} seconds so me sleeping ")
                 await asyncio.sleep(e.x)
-                return uploadvideo(file, update, msg)
             except Exception as er:
                 logger.info(str(er))
             if thumb_image_path is not None:
