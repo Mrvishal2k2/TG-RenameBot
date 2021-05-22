@@ -31,18 +31,28 @@ log = logging.getLogger(__name__)
 import pyrogram
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
-if __name__ == "__main__" :
-    if not os.path.isdir(Config.DOWNLOAD_LOCATION):
-        os.makedirs(Config.DOWNLOAD_LOCATION)
-    plugins = dict(
-        root="root/plugins"
-    )
-    app = pyrogram.Client(
-        "RenameBot",
-        bot_token=Config.TG_BOT_TOKEN,
-        api_id=Config.APP_ID,
-        api_hash=Config.API_HASH,
-        plugins=plugins
-    )
-    log.info("<<[Bot Started]>>")
-    app.run()
+
+class Bot(Client):
+
+    def __init__(self):
+        super().__init__(
+            session_name="RENAMEBOT",
+            api_id=Config.API_ID,
+            api_hash=Config.API_HASH,
+            bot_token=Config.TG_BOT_TOKEN,
+            plugins={"root": "root/plugins"},
+            sleep_threshold=5,
+        )
+
+    async def start(self):
+        await super().start()
+        if not os.path.isdir(Config.DOWNLOAD_LOCATION):
+           os.makedirs(Config.DOWNLOAD_LOCATION)
+        log.info("<<[Bot Started]>>")
+    async def stop(self, *args):
+        await super().stop()
+        log.info("<<[Bot Stopped]>>")
+
+app = Bot()
+app.run()
+
