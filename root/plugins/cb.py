@@ -80,9 +80,9 @@ async def renamer(c,m,as_file=False):
   os.rename(downloaded_file,new_file_name)
   try:
     await d_msg.delete()
-    u_msg = await usr_msg.reply_text("Uploading..",quote=True)
+    u_msg = await m.reply_text("Uploading..",quote=True)
   except:  # whatever the error but still i need this message to upload 
-    u_msg = await usr_msg.reply_text("Uploading..",quote=True)
+    u_msg = await m.reply_text("Uploading..",quote=True)
     pass
   # now need to upload 
   try:
