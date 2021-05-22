@@ -27,11 +27,8 @@ async def help_user(c,m):
         
 @Client.on_message(filters.command("start"))
 async def start_msg(c,m):
-    owner = await c.get_users(int(Config.OWNER_ID))
-    owner_username = owner.username if owner.username else "BotDunia"
-
     button = [[
-               InlineKeyboardButton("Owner ", url=f"https://t.me/{owner_username}")
+               InlineKeyboardButton("Owner ", url=f"https://t.me/{Config.OWNER_USERNAME}")
              ]]
     markup = InlineKeyboardMarkup(button) 
     try:
@@ -40,7 +37,7 @@ async def start_msg(c,m):
         log.info(str(e))
 
         
-@Client.on_message(filters.command("log") & filters.private & filters.user(Config.OWNER))
+@Client.on_message(filters.command("log") & filters.private & filters.user(Config.OWNER_ID))
 async def log_msg(c,m):
   z =await m.reply_text("Processing..", True)
   if os.path.exists("Log.txt"):
