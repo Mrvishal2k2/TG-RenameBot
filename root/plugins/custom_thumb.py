@@ -49,7 +49,7 @@ async def save_photo(c,m):
         try:
            await m.reply_text("Thumbnail Saved Successfully.. 😍",quote=True)
         except Exception as e:
-          log.info(f"#Error e")
+          log.info(f"#Error {e}")
 
 @Client.on_message(filters.command(["deletethumb"]))
 async def delete_thumbnail(c,m):
@@ -69,7 +69,7 @@ async def show_thumbnail(c,m):
     if not os.path.exists(thumb_image_path):
         mes = await thumb(m.from_user.id)
         if mes is not None:
-            msggg = await c.get_messages(m.chat.id, mes.msg_id)
+            msgg = await c.get_messages(m.chat.id, mes.msg_id)
             await msgg.download(file_name=thumb_image_path)
             thumb_image_path = thumb_image_path
         else:
