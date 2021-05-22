@@ -8,6 +8,7 @@ import pyrogram
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup,ForceReply
 from root.utils.utils import *
+from root.utils.uploader import uploader
 import asyncio
 
 
@@ -117,7 +118,7 @@ async def convert_call(c,m):
       file_name=d_location,
       progress=progress_for_pyrogram,
       progress_args=(
-                "Downloading..{media_name}",
+                "Downloading..",
                 d_msg,
                 d_time
             )
