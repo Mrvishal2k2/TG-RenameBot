@@ -12,9 +12,7 @@ from root.utils.uploader import uploader
 import asyncio
 
 
-@Client.on_callback_query(
-    filters.create(lambda _, __, query: query.data.startswith("rename"))
-)
+@Client.on_callback_query(filters.create(lambda _, __, query: query.data.startswith("rename")))
 async def rename_call(c,m):
   if m.data=="rename_file":
     mode = "File"
@@ -84,6 +82,7 @@ async def renamer(c,m,as_file=False):
   except:  # whatever the error but still i need this message to upload 
     u_msg = await m.reply_text("Uploading..",quote=True)
     pass
+  # try to get thumb to use for later upload
   # now need to upload 
   try:
      if as_file:
@@ -97,16 +96,17 @@ async def renamer(c,m,as_file=False):
   
   
 
-@Client.on_callback_query(
-    filters.create(lambda _, __, query: query.data.startswith("cancel"))
-)
+@Client.on_callback_query(filters.create(lambda _, __, query: query.data.startswith("cancel")))
 async def cancel_call(c,m):
-   await m.message.delete()
+   if m.data=="cancel":
+      await m.message.delete()
+   else:  # I think I need to delete both also some case currently not used
+      await m.message.reply_to_message.delete()
+      await m.message.delete()
 
 
-@Client.on_callback_query(
-    filters.create(lambda _, __, query: query.data.startswith("convert"))
-)
+
+@Client.on_callback_query(filters.create(lambda _, __, query: query.data.startswith("convert")))
 async def convert_call(c,m):
   usr_msg = m.message.reply_to_message
   d_msg = await m.message.edit_text("Downloading File")
@@ -134,6 +134,8 @@ async def convert_call(c,m):
   except:  # whatever the error but still i need this message to upload 
     u_msg = await usr_msg.reply_text("Uploading..",quote=True)
     pass
+  # try to get thumb to use later while uploading..
+
   # now need to upload 
   try:
      if m.data=="convert_file":
