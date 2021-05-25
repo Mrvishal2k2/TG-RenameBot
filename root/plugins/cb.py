@@ -83,6 +83,13 @@ async def renamer(c,m,as_file=False):
     u_msg = await m.reply_text("Uploading..",quote=True)
     pass
   # try to get thumb to use for later upload
+  thumb_image_path = Config.DOWNLOAD_LOCATION + "/thumb/" + str(m.from_user.id) + ".jpg"
+  if not os.path.exists(thumb_image_path):
+      mes = await thumb(m.from_user.id)
+      if mes is not None:
+          mesg = await c.get_messages(m.chat.id, mes.msg_id)
+          await mesg.download(file_name=thumb_image_path)
+
   # now need to upload 
   try:
      if as_file:
@@ -135,6 +142,12 @@ async def convert_call(c,m):
     u_msg = await usr_msg.reply_text("Uploading..",quote=True)
     pass
   # try to get thumb to use later while uploading..
+  thumb_image_path = Config.DOWNLOAD_LOCATION + "/thumb/" + str(m.from_user.id) + ".jpg"
+  if not os.path.exists(thumb_image_path):
+      mes = await thumb(m.from_user.id)
+      if mes is not None:
+          mesg = await c.get_messages(m.message.chat.id, mes.msg_id)
+          await mesg.download(file_name=thumb_image_path)
 
   # now need to upload 
   try:
