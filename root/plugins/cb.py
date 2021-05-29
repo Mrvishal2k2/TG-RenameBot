@@ -12,6 +12,7 @@ from root.utils.uploader import uploader
 import asyncio
 from root.messages import Translation
 from root.config import Config
+from root.utils.database import *
 import logging
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
