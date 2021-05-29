@@ -17,3 +17,4 @@ class Config(object):
   # owner is for log cmd only owner can use (this can be multiple users)
   OWNER_ID = [int(i) for i in os.environ.get("OWNER_ID", "").split(" ")]
   OWNER_USERNAME = os.environ.get("OWNER_USERNAME", "BotDunia")
+  CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION",False)
