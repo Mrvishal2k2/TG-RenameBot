@@ -58,7 +58,6 @@ async def renamer(c,m,as_file=False):
     extension = media_name.split(".",1)[-1]
   except:
     extension = "mkv"
-    pass
   await bot_msg.delete() # delete name asked msg 
   if len(new_f_name) > 64:
       await m.reply_text(text=f"Limits of telegram file name is 64 charecters only\nReduce some and try again.")
@@ -79,10 +78,8 @@ async def renamer(c,m,as_file=False):
       )
   except ValueError:
       downloaded_file = None
-      pass
   except Exception as e:
     log.info(str(e))
-    pass
   if downloaded_file is None:
     await d_msg.edit_text(Translation.DOWNLOAD_FAIL_MSG)
     return
@@ -93,7 +90,6 @@ async def renamer(c,m,as_file=False):
     u_msg = await m.reply_text(Translation.UPLOAD_MSG,quote=True)
   except:  # whatever the error but still i need this message to upload 
     u_msg = await m.reply_text(Translation.UPLOAD_MSG,quote=True)
-    pass
   # try to get thumb to use for later upload
   thumb_image_path = Config.DOWNLOAD_LOCATION + "/thumb/" + str(m.from_user.id) + ".jpg"
   if not os.path.exists(thumb_image_path):
@@ -149,7 +145,6 @@ async def convert_call(c,m):
       )
   except ValueError:
       downloaded_file = None
-      pass
   except Exception as e:
     log.info(str(e))
   if downloaded_file is None:
@@ -160,7 +155,6 @@ async def convert_call(c,m):
     u_msg = await usr_msg.reply_text(Translation.UPLOAD_MSG,quote=True)
   except:  # whatever the error but still i need this message to upload 
     u_msg = await usr_msg.reply_text(Translation.UPLOAD_MSG,quote=True)
-    pass
   # try to get thumb to use later while uploading..
   thumb_image_path = Config.DOWNLOAD_LOCATION + "/thumb/" + str(m.from_user.id) + ".jpg"
   if not os.path.exists(thumb_image_path):
