@@ -10,7 +10,12 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup,ForceReply
 from root.utils.utils import *
 from root.utils.uploader import uploader
 import asyncio
-
+from root.messages import Translation
+from root.config import Config
+import logging
+logging.basicConfig(level=logging.DEBUG,
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+log = logging.getLogger(__name__)
 
 @Client.on_callback_query(filters.create(lambda _, __, query: query.data.startswith("rename")))
 async def rename_call(c,m):
@@ -57,7 +62,7 @@ async def renamer(c,m,as_file=False):
   if len(new_f_name) > 64:
       await m.reply_text(text=f"Limits of telegram file name is 64 charecters only\nReduce some and try again.")
       return
-  d_msg = await m.reply_text("Downloading File",True)
+  d_msg = await m.reply_text(Translation.DOWNLOAD_MSG,True)
   d_location = Config.DOWNLOAD_LOCATION + "/" + str(m.chat.id) + "/"
   d_time = time.time()
   try:
@@ -66,7 +71,7 @@ async def renamer(c,m,as_file=False):
       file_name=d_location,
       progress=progress_for_pyrogram,
       progress_args=(
-                f"Downloading..{media_name}",
+                Translation.DOWNLOAD_MSG,
                 d_msg,
                 d_time
             )
@@ -74,15 +79,15 @@ async def renamer(c,m,as_file=False):
   except:
     pass
   if downloaded_file is None:
-    await d_msg.edit_text("Download Failed")
+    await d_msg.edit_text(Translation.DOWNLOAD_FAIL_MSG)
     return
   new_file_name = d_location + new_f_name + "." + extension
   os.rename(downloaded_file,new_file_name)
   try:
     await d_msg.delete()
-    u_msg = await m.reply_text("Uploading..",quote=True)
+    u_msg = await m.reply_text(Translation.UPLOAD_MSG,quote=True)
   except:  # whatever the error but still i need this message to upload 
-    u_msg = await m.reply_text("Uploading..",quote=True)
+    u_msg = await m.reply_text(Translation.UPLOAD_MSG,quote=True)
     pass
   # try to get thumb to use for later upload
   thumb_image_path = Config.DOWNLOAD_LOCATION + "/thumb/" + str(m.from_user.id) + ".jpg"
@@ -99,9 +104,14 @@ async def renamer(c,m,as_file=False):
      else:
        await uploader(c,new_file_name,m,u_msg)
   except Exception as er:
-    print(er)
+     await u_msg.edit_text(Translation.UPLOAD_FAIL_MSG)
+     log.info(str(er))
+     return
+
   await u_msg.delete()
-  await m.reply_text("Uploaded Successfully...",quote=True)
+  if os.path.exists(downloaded_file):
+       os.remove(downloaded_file)
+  await m.reply_text(Translation.UPLOAD_DONE_MSG,quote=True)
   
   
 
@@ -109,7 +119,7 @@ async def renamer(c,m,as_file=False):
 async def cancel_call(c,m):
    if m.data=="cancel":
       await m.message.delete()
-   else:  # I think I need to delete both also some case currently not used
+   else:  # I think I need to delete both also in some case currently not used
       await m.message.reply_to_message.delete()
       await m.message.delete()
 
@@ -118,7 +128,7 @@ async def cancel_call(c,m):
 @Client.on_callback_query(filters.create(lambda _, __, query: query.data.startswith("convert")))
 async def convert_call(c,m):
   usr_msg = m.message.reply_to_message
-  d_msg = await m.message.edit_text("Downloading File")
+  d_msg = await m.message.edit_text(Translation.DOWNLOAD_MSG)
   d_location = Config.DOWNLOAD_LOCATION + "/" + str(m.from_user.id) + "/"
   d_time = time.time()
   try:
@@ -127,7 +137,7 @@ async def convert_call(c,m):
       file_name=d_location,
       progress=progress_for_pyrogram,
       progress_args=(
-                "Downloading..",
+                Translation.DOWNLOAD_MSG,
                 d_msg,
                 d_time
             )
@@ -135,13 +145,13 @@ async def convert_call(c,m):
   except:
     pass
   if downloaded_file is None:
-    await d_msg.edit_text("Download Failed")
+    await d_msg.edit_text(Translation.DOWNLOAD_FAIL_MSG)
     return
   try:
     await d_msg.delete()
-    u_msg = await usr_msg.reply_text("Uploading..",quote=True)
+    u_msg = await usr_msg.reply_text(Translation.UPLOAD_MSG,quote=True)
   except:  # whatever the error but still i need this message to upload 
-    u_msg = await usr_msg.reply_text("Uploading..",quote=True)
+    u_msg = await usr_msg.reply_text(Translation.UPLOAD_MSG,quote=True)
     pass
   # try to get thumb to use later while uploading..
   thumb_image_path = Config.DOWNLOAD_LOCATION + "/thumb/" + str(m.from_user.id) + ".jpg"
@@ -158,7 +168,10 @@ async def convert_call(c,m):
      else:
        await uploader(c,downloaded_file,usr_msg,u_msg)
   except Exception as er:
-    print(er)
+    await u_msg.edit_text(Translation.UPLOAD_FAIL_MSG)
+    log.info(str(er))
+    return
   await u_msg.delete()
-  await usr_msg.reply_text("Uploaded Successfully...",quote=True)
-  
+  if os.path.exists(downloaded_file):
+       os.remove(downloaded_file)
+  await usr_msg.reply_text(Translation.UPLOAD_DONE_MSG,quote=True)
