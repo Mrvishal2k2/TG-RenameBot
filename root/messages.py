@@ -6,3 +6,4 @@ class Translation(object):
     DOWNLOAD_FAIL_MSG = "**Failed to Download File**❎"
     UPLOAD_MSG = "**Uploading** ⏫"
     UPLOAD_FAIL_MSG = "**Failed to Upload File**❎"
+    UPLOAD_DONE_MSG = "**Uploaded Successfully 💡"
