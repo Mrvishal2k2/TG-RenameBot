@@ -25,6 +25,7 @@ from hachoir.parser import createParser
 from PIL import Image
 from root.utils.utils import progress_for_pyrogram, humanbytes, take_screen_shot, copy_file
 from root.config import Config
+from root.messages import Translation
 from pyrogram.errors  import FloodWait
 
 async def uploader(bot,file, update, msg,as_file=False):
@@ -42,16 +43,16 @@ async def uploader(bot,file, update, msg,as_file=False):
            thumb_image_path = await copy_file(thumb_location, os.path.dirname(os.path.abspath(file)))
         try:
            await bot.send_document(
-         document=file,
-         chat_id=update.chat.id,
-         reply_to_message_id=update.message_id,
-         disable_notification=True,
-          force_document=True,
-          thumb=thumb_image_path,
-           progress=progress_for_pyrogram,
-            caption=filename,
-            progress_args=(
-        	      	     f"Uploading \n{filename}...",
+               document=file,
+               chat_id=update.chat.id,
+               reply_to_message_id=update.message_id,
+               disable_notification=True,
+               force_document=True,
+               thumb=thumb_image_path,
+               progress=progress_for_pyrogram,
+               caption=filename,
+               progress_args=(
+        	      	     Translation.UPLOAD_MSG,
         	      	     msg,
         	      	     start_time
         	      	     ))
@@ -106,7 +107,7 @@ async def uploader(bot,file, update, msg,as_file=False):
          	  supports_streaming=True,
          	  progress=progress_for_pyrogram,
                   progress_args=(
-        	         f"Uploading \n{filename}...",
+        	         Translation.UPLOAD_MSG,
         	   	     msg,
      	      	     start_time
         	   	     ))
@@ -148,7 +149,7 @@ async def uploader(bot,file, update, msg,as_file=False):
                     disable_notification=True,
            	    progress=progress_for_pyrogram,
            	    progress_args=(
-        	      	     f"Uploading \n{filename}...",
+        	      	     Translation.UPLOAD_MSG,
         	      	     msg,
         	      	     start_time
         	      	     ))
@@ -170,8 +171,8 @@ async def uploader(bot,file, update, msg,as_file=False):
                    progress=progress_for_pyrogram,
                    caption=filename,
                    disable_notification=True,
-            progress_args=(
-        	      	     f"Uploading \n{filename}...",
+                   progress_args=(
+        	      	     Translation.UPLOAD_MSG,
         	      	     msg,
         	      	     start_time
         	      	     ))
