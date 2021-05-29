@@ -28,9 +28,12 @@ from root.config import Config
 from pyrogram.errors  import FloodWait
 
 async def uploader(bot,file, update, msg,as_file=False):
-    # parameters are file to up , message to reply doc, msg to edit
+
     start_time = time.time() 
-    filename = file.split("/")[-1] 
+    afilename = file.split("/")[-1]
+    filename = afilename.split(".",1)[0]
+    if Config.CUSTOM_CAPTION:
+         filename += f"\n{Config.CUSTOM_CAPTION}"
     # Thumb Location parameter 
     thumb_location = Config.DOWNLOAD_LOCATION + "/thumb/" + str(update.chat.id) + ".jpg" 
     thumb_image_path = None
