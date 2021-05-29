@@ -36,8 +36,11 @@ async def rename_call(c,m):
 
 @Client.on_message(filters.private & filters.reply & filters.text)
 async def rep_rename_call(c, m):
-    # check which mode first 
-    get_mode = str(m.reply_to_message.text).splitlines()[0].split(" ")[1]
+    # check which mode first
+    try:
+        get_mode = str(m.reply_to_message.text).splitlines()[0].split(" ")[1]
+    except IndexError:
+        get_mode = "Video"
     if (m.reply_to_message.reply_markup) and isinstance(m.reply_to_message.reply_markup, ForceReply):
       if get_mode == "File":
         asyncio.create_task(renamer(c, m,as_file=True))   
