@@ -45,6 +45,10 @@ start - start the bot
 help - ask help 
 log - admin cmd 
 ```
+## ToDO
+* Increase stability
+* Add other multiple useful stuff
+* Add Auth system for private use 
 
 ### Support:
 * Join BotDunia channel
@@ -65,7 +69,7 @@ log - admin cmd
 * Don't be a copy cat !!
 * Good to see if you give me credits if you are using !!
 * This is only for personal use !! Don't make a Bot channel Business with this !!
-
+* Pull Requests are always accepted but shouldn't involve increasing complexity of deploying
 ## Credits 
 * Specdie as always ❤️
 * And everyone in this Journey 
