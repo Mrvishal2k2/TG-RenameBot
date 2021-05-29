@@ -77,7 +77,11 @@ async def renamer(c,m,as_file=False):
                 d_time
             )
       )
-  except:
+  except ValueError:
+      downloaded_file = None
+      pass
+  except Exception as e:
+    log.info(str(e))
     pass
   if downloaded_file is None:
     await d_msg.edit_text(Translation.DOWNLOAD_FAIL_MSG)
@@ -143,8 +147,11 @@ async def convert_call(c,m):
                 d_time
             )
       )
-  except:
-    pass
+  except ValueError:
+      downloaded_file = None
+      pass
+  except Exception as e:
+    log.info(str(e))
   if downloaded_file is None:
     await d_msg.edit_text(Translation.DOWNLOAD_FAIL_MSG)
     return
