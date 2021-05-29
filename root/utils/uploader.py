@@ -116,7 +116,6 @@ async def uploader(bot,file, update, msg,as_file=False):
                  await asyncio.sleep(e.x)
              except Exception as er:
                   logger.info(str(er))
-                  pass
 
              if thumb_image_path is not None:
                 os.remove(thumb_image_path)  
