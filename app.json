@@ -1,0 +1,56 @@
+{
+  "name": "TG Rename Bot",
+  "description": "Telegram's best Rename Bot. Create your Fork now.",
+  "keywords": [
+    "telegram",
+    "best",
+    "Rename"
+  ],
+  "website": "https://github.com/mrvishal2k2",
+  "repository": "https://github.com/mrvishal2k2/TG-RenameBot",
+  "env": {
+    "TG_BOT_TOKEN": {
+      "description": "Your bot token, Get it from @Botfather.",
+      "value": ""
+    },
+    "APP_ID": {
+      "description": "Get this value from https://my.telegram.org",
+      "value": ""
+    },
+    "API_HASH": {
+      "description": "Get this value from https://my.telegram.org",
+      "value": ""
+    },
+    "OWNER_ID": {
+      "description": "Owner userid to use for getting logs..",
+      "value": "",
+    }
+    "OWNER_USERNAME": {
+      "description": "Owners username to use at start msg button..",
+      "value": "",
+      "required": false
+    }
+    "CUSTOM_CAPTION": {
+      "description": "Custom caption to be added after file name in caption",
+      "value": "",
+      "required": false
+    }
+  },
+  "addons": [
+    {
+    "plan": "heroku-postgresql",
+      "options": {
+        "version": "12"
+      }
+    }
+  ],
+  "buildpacks": [{
+    "url": "heroku/python"
+  }],
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "free"
+    }
+  }
+}
