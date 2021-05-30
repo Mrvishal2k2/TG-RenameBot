@@ -4,7 +4,9 @@
   "keywords": [
     "telegram",
     "best",
-    "Rename"
+    "Rename",
+    "Convert",
+    "Caption"
   ],
   "website": "https://github.com/mrvishal2k2",
   "repository": "https://github.com/mrvishal2k2/TG-RenameBot/tree/main",
@@ -27,11 +29,11 @@
       "value": ""
     },
     "OWNER_USERNAME": {
-      "description": "Owners username to use at start msg button..",
+      "description": "(Optional)Owners username to use at start msg button..",
       "required": false
     },
     "CUSTOM_CAPTION": {
-      "description": "Custom caption to be added after file name in caption",
+      "description": "(Optional)Custom caption to be added after file name in caption",
       "required": false
     }
   },
