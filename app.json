@@ -24,7 +24,7 @@
     },
     "OWNER_ID": {
       "description": "Owner userid to use for getting logs..",
-      "value": "",
+      "value": ""
     },
     "OWNER_USERNAME": {
       "description": "Owners username to use at start msg button..",
