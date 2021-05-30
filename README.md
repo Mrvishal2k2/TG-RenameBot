@@ -43,6 +43,8 @@ python3 bot.py
 ```
 start - start the bot
 help - ask help 
+showthumb - shows saved thumbnail
+deletethumb - deletes saved thumbnail
 log - admin cmd 
 ```
 ## ToDO
