@@ -1,5 +1,5 @@
 {
-  "name": "TG Rename Bot",
+  "name": "TG-RenameBot",
   "description": "Telegram's best Rename Bot. Create your Fork now.",
   "keywords": [
     "telegram",
@@ -8,6 +8,7 @@
   ],
   "website": "https://github.com/mrvishal2k2",
   "repository": "https://github.com/mrvishal2k2/TG-RenameBot",
+  "logo": "https://telegra.ph//file/b3461e7795bb258688623.jpg",
   "env": {
     "TG_BOT_TOKEN": {
       "description": "Your bot token, Get it from @Botfather.",
@@ -27,12 +28,10 @@
     },
     "OWNER_USERNAME": {
       "description": "Owners username to use at start msg button..",
-      "value": "",
       "required": false
     },
     "CUSTOM_CAPTION": {
       "description": "Custom caption to be added after file name in caption",
-      "value": "",
       "required": false
     }
   },
