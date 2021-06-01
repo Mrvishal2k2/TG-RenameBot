@@ -1,9 +1,3 @@
-# RenameBot
-# Thanks to Spechide Unkle as always for the concept  ♥️
-# This file is a part of mrvishal2k2 rename repo 
-# Dont kang !!!
-# © Mrvishal2k2
-
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, scoped_session
