@@ -58,7 +58,7 @@ async def renamer(c,m,as_file=False):
   media = todown.document or todown.video or todown.audio or todown.voice or todown.video_note or todown.animation
   try:
     media_name = media.file_name
-    extension = media_name.split(".",1)[-1]
+    extension = media_name.split(".")[-1]
   except:
     extension = "mkv"
   await bot_msg.delete() # delete name asked msg 
