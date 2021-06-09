@@ -73,5 +73,5 @@ log - admin cmd
 * This is only for personal use !! Don't make a Bot channel Business with this !!
 * Pull Requests are always accepted but shouldn't involve increasing complexity of deploying
 ## Credits 
-* Specdie as always ❤️
+* Spechide as always ❤️
 * And everyone in this Journey 
