@@ -24,8 +24,6 @@ async def rename_call(c,m):
     mode = "File"
   elif m.data == "rename_video":
     mode = "Video"
-  else: # this couldnt happen
-    pass
   await m.message.delete()
   await c.send_message(
     text=f"Mode: {mode} \nNow send me new file name without extension",
@@ -121,11 +119,10 @@ async def renamer(c,m,as_file=False):
 
 @Client.on_callback_query(filters.create(lambda _, __, query: query.data.startswith("cancel")))
 async def cancel_call(c,m):
-   if m.data=="cancel":
-      await m.message.delete()
-   else:  # I think I need to delete both also in some case currently not used
-      await m.message.reply_to_message.delete()
-      await m.message.delete()
+  if m.data != "cancel":# I think I need to delete both also in some case currently not used
+    await m.message.reply_to_message.delete()
+
+  await m.message.delete()
 
 
 
