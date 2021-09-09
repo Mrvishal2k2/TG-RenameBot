@@ -3,8 +3,7 @@
 # Dont kang !!!
 # © Mrvishal2k2
 
-import logging
-import os
+import os, logging
 from root.config import Config
 from logging.handlers import RotatingFileHandler
 from pyrogram import Client
@@ -41,13 +40,12 @@ class Bot(Client):
             api_hash=Config.API_HASH,
             bot_token=Config.TG_BOT_TOKEN,
             plugins={"root": "root/plugins"},
-            sleep_threshold=5,
+            sleep_threshold=5
         )
 
     async def start(self):
         await super().start()
-        if not os.path.isdir(Config.DOWNLOAD_LOCATION):
-           os.makedirs(Config.DOWNLOAD_LOCATION)
+        os.makedirs(Config.DOWNLOAD_LOCATION,exist_ok=True)
         log.info("<<[Bot Started]>>")
     async def stop(self, *args):
         await super().stop()
