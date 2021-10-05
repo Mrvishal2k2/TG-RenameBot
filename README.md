@@ -8,7 +8,7 @@ and Auto detection !!
 ### Installation
 
 #### Easy Way 
-Use [Rename Robot](https://t.me/RenameDuniaBot) 
+Use [Rename Robot](https://t.me/FilmyFather_Renamer_Bot) 
 
 #### The Simple Way
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
@@ -46,6 +46,7 @@ help - ask help
 showthumb - shows saved thumbnail
 deletethumb - deletes saved thumbnail
 log - admin cmd 
+about - About Myself
 ```
 ## ToDO
 * Increase stability
