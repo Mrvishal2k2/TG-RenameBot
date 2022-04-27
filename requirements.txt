@@ -1,6 +1,10 @@
 requests
 
 # to get thumb...
+hachoir
+numpy
+Pillow
+
 pyrogram==1.4.16
 tgcrypto
 
