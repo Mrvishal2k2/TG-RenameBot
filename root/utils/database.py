@@ -27,7 +27,7 @@ class Thumbnail(BASE):
     __tablename__ = "thumbnail"
     id = Column(Integer, primary_key=True)
     msg_id = Column(Integer)
-    
+
     def __init__(self, id, msg_id):
         self.id = id
         self.msg_id = msg_id

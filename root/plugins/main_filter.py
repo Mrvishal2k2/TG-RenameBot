@@ -16,7 +16,7 @@ log = logging.getLogger(__name__)
 async def rename_filter(c,m):
   media = m.document or m.video or m.audio or m.voice or m.video_note or m.animation
   ## couldn't add photo bcoz i want all photos to use as thumb..
-  
+
   text = ""
   button = []
   try:
@@ -25,7 +25,7 @@ async def rename_filter(c,m):
   except:
     # some files dont gib name ..
     filename = None 
-    
+
   text += "Select the desired Option"
   button.append([InlineKeyboardButton("Rename as File", callback_data="rename_file")])
   # Thanks to albert for mime_type suggestion 
@@ -35,7 +35,7 @@ async def rename_filter(c,m):
     button.append([InlineKeyboardButton("Convert as File",callback_data="convert_file")])
     button.append([InlineKeyboardButton("Convert as Video",callback_data="convert_video")])
   button.append([InlineKeyboardButton("Cancel ❌",callback_data="cancel")])
- 
+
   markup = InlineKeyboardMarkup(button)
   try:
     await m.reply_text(text,quote=True,reply_markup=markup,parse_mode="markdown",disable_web_page_preview=True)

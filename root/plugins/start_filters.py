@@ -25,7 +25,7 @@ async def help_user(c,m):
        await m.reply_text(Translation.HELP_USER,quote=True)
     except Exception as e:
         log.info(str(e))
-        
+
 @Client.on_message(filters.command("start"))
 async def start_msg(c,m):
     button = [[
@@ -37,7 +37,7 @@ async def start_msg(c,m):
     except Exception as e:
         log.info(str(e))
 
-        
+
 @Client.on_message(filters.command("log") & filters.private & filters.user(Config.OWNER_ID))
 async def log_msg(c,m):
   z =await m.reply_text("Processing..", True)
