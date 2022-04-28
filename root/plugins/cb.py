@@ -116,8 +116,8 @@ async def renamer(c,m,as_file=False):
   if os.path.exists(downloaded_file):
        os.remove(downloaded_file)
   await m.reply_text(Translation.UPLOAD_DONE_MSG,quote=True)
-  
-  
+
+
 
 @Client.on_callback_query(filters.create(lambda _, __, query: query.data.startswith("cancel")))
 async def cancel_call(c,m):
