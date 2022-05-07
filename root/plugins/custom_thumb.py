@@ -6,24 +6,19 @@ Dont kang !!!
 © Mrvishal2k2
 '''
 
-import logging
-logging.basicConfig(level=logging.DEBUG,
-                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-log = logging.getLogger(__name__)
-
-import numpy
-import os
+import logging, numpy, os, time, pyrogram
 from PIL import Image
-import time
-import pyrogram
 from pyrogram import Client,filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from root.config import Config
 from root.messages import Translation
 from root.utils.database import *
+
+logging.basicConfig(level=logging.DEBUG,
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+log = logging.getLogger(__name__)
+
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
-
-
 
 @Client.on_message(filters.photo)
 async def save_photo(c,m):
@@ -49,7 +44,7 @@ async def save_photo(c,m):
         try:
            await v.edit_text("Thumbnail Saved Successfully.. 😍")
         except Exception as e:
-          log.info(f"#Error {e}")
+          log.error(f"#Error {e}")
 
 @Client.on_message(filters.command(["deletethumb"]))
 async def delete_thumbnail(c,m):
