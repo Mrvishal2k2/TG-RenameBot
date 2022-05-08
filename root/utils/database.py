@@ -2,14 +2,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, scoped_session
 
-import os
-import threading
-import asyncio
+import os, asyncio, threading
 from sqlalchemy import Column, Integer, Boolean, String, ForeignKey, UniqueConstraint, func
-
-
 from root.config import Config
-
 
 def start() -> scoped_session:
     engine = create_engine(Config.DB_URI, client_encoding="utf8")
