@@ -1,8 +1,9 @@
-# RenameBot
-# This file is a part of mrvishal2k2 rename repo 
-# Dont kang !!!
-# © Mrvishal2k2
-
+'''
+RenameBot
+This file is a part of mrvishal2k2 rename repo 
+Dont kang !!!
+© Mrvishal2k2
+'''
 import os, logging
 from root.config import Config
 from logging.handlers import RotatingFileHandler
@@ -32,7 +33,6 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 
 class Bot(Client):
-
     def __init__(self):
         super().__init__(
             session_name="RENAMEBOT",
@@ -42,7 +42,6 @@ class Bot(Client):
             plugins={"root": "root/plugins"},
             sleep_threshold=5
         )
-
     async def start(self):
         await super().start()
         os.makedirs(Config.DOWNLOAD_LOCATION,exist_ok=True)
@@ -51,6 +50,4 @@ class Bot(Client):
         await super().stop()
         log.info("<<[Bot Stopped]>>")
 
-app = Bot()
-app.run()
-
+Bot().run()
