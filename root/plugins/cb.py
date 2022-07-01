@@ -7,31 +7,31 @@ Dont kang !!!
 import pyrogram, logging, asyncio
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup,ForceReply
-
-from root.utils.utils import *
-from root.utils.uploader import uploader
+from root.utils import *
 from root.messages import Translation
 from root.config import Config
-from root.utils.database import *
 
-logging.basicConfig(level=logging.DEBUG,
-                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+
 log = logging.getLogger(__name__)
 
 @Client.on_callback_query(filters.create(lambda _, __, query: query.data.startswith("rename")))
 async def rename_call(c,m):
 
+  mode = "File" if m.data=="rename_file" else "Video"
+
+  '''
   if m.data=="rename_file":
     mode = "File"
   elif m.data == "rename_video":
     mode = "Video"
-
+  '''
 
   await m.message.delete()
   await c.send_message(
     text=f"Mode: {mode} \nNow send me new file name without extension",
     chat_id=m.message.chat.id,
-    reply_to_message_id=m.message.reply_to_message.message_id,
+    reply_to_message_id=m.message.reply_to_message.id,
     reply_markup=ForceReply(True)
     )
 
@@ -42,6 +42,7 @@ async def rep_rename_call(c, m):
         get_mode = str(m.reply_to_message.text).splitlines()[0].split(" ")[1]
     except IndexError:
         get_mode = "Video"
+
     if (m.reply_to_message.reply_markup) and isinstance(m.reply_to_message.reply_markup, ForceReply):
       if get_mode == "File":
         asyncio.create_task(renamer(c, m,as_file=True))   
@@ -52,7 +53,7 @@ async def rep_rename_call(c, m):
 
 
 async def renamer(c,m,as_file=False):
-  bot_msg = await c.get_messages(m.chat.id, m.reply_to_message.message_id) 
+  bot_msg = await c.get_messages(m.chat.id, m.reply_to_message.id) 
   todown = bot_msg.reply_to_message # msg with media
   new_f_name = m.text # new name
   media = todown.document or todown.video or todown.audio or todown.voice or todown.video_note or todown.animation
@@ -63,7 +64,7 @@ async def renamer(c,m,as_file=False):
   except:
     extension = "mkv"
 
-  await bot_msg.delete() # delete name asked msg 
+  await bot_msg.delete() # delete name-req msg 
 
   if len(new_f_name) > 64:
       return await m.reply_text(text=f"Limits of telegram file name is 64 charecters only\nReduce some and try again.")
@@ -135,7 +136,7 @@ async def renamer(c,m,as_file=False):
 async def cancel_call(c,m):
    if m.data=="cancel":
       await m.message.delete()
-   else:  # I think I need to delete both also in some case currently not used
+   else:  # I think I need to delete both also in some case, butw currently not used
       await m.message.reply_to_message.delete()
       await m.message.delete()
 

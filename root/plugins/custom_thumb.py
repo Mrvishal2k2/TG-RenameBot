@@ -12,7 +12,7 @@ from pyrogram import Client,filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from root.config import Config
 from root.messages import Translation
-from root.utils.database import *
+from root.utils import *
 
 
 log = logging.getLogger(__name__)

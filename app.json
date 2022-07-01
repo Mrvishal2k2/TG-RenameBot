@@ -3,6 +3,7 @@
   "description": "Telegram's best Rename Bot. Create your Fork now.",
   "keywords": [
     "telegram",
+    "utility",
     "best",
     "Rename",
     "Convert",
@@ -41,7 +42,7 @@
     {
     "plan": "heroku-postgresql",
       "options": {
-        "version": "12"
+        "version": "14"
       }
     }
   ],
