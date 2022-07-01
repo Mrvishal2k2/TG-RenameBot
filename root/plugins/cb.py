@@ -131,16 +131,11 @@ async def renamer(c,m,as_file=False):
   await m.reply_text(Translation.UPLOAD_DONE_MSG,quote=True)
 
 
-
 @Client.on_callback_query(filters.create(lambda _, __, query: query.data.startswith("cancel")))
 async def cancel_call(c,m):
-   if m.data=="cancel":
-      await m.message.delete()
-   else:  # I think I need to delete both also in some case, butw currently not used
+    if m.data != "cancel": 
       await m.message.reply_to_message.delete()
-      await m.message.delete()
-
-
+    await m.message.delete()
 
 @Client.on_callback_query(filters.create(lambda _, __, query: query.data.startswith("convert")))
 async def convert_call(c,m):
