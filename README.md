@@ -6,6 +6,7 @@ using [Pyrogram](https://docs.pyrogram.org)!!
 ### Installation
 
 #### The Simple Way
+Use this at your own risk as heroku suspended accounts on deploying due to overuse.
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 #### BEST WAY (VPS)
@@ -41,16 +42,10 @@ showthumb - shows saved thumbnail
 deletethumb - deletes saved thumbnail
 log - admin cmd 
 ```
-## ToDO
-* Increase stability
-* Add other multiple useful stuff
-* Add Auth system for private use 
 
 ### Support:
 * Join BotDunia channel
 <a href="https://t.me/BotDunia"><img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white"></a>
-* Join Support Group
-<a href="https://t.me/BotDuniaSupport"><img src="https://img.shields.io/badge/Telegram-Join%20Telegram%20Group-blue.svg?logo=telegram"></a>
 
 ### Follow on:
 <p align="left">
@@ -61,12 +56,11 @@ log - admin cmd
 </p>
 
 ## All rights reserved !!
-* Kangers stay away from Kang !!
-* Don't be a copy cat !!
-* Good to see if you give me credits if you are using !!
-* This is only for personal use !! Don't make a Bot channel Business with this !!
-* Pull Requests are always accepted but shouldn't involve increasing complexity of deploying
+* This is only for personal use !! Don't make a Bot channel Business with this on Telegram !!
+* Kang/Copy/Reuse of the code used here without permission and claiming to be self owning is not tolerated and will be taken actions against such acts.
+* Good to see if you give me credits if you are using the bot !!
+* Pull Requests are always accepted but shouldn't involve increasing complexity of deploying as this project mainly aims to be newbie friendly.
 
 ## Credits 
-* Spechide as always ❤️
-* And everyone in this Journey 
+* Spechide as always for his opensources which motivated me to do "best" things ❤️
+* And also everyone in this Journey for Support
