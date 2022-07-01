@@ -14,29 +14,23 @@ from root.config import Config
 from root.messages import Translation
 from root.utils.database import *
 
-logging.basicConfig(level=logging.DEBUG,
-                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-log = logging.getLogger(__name__)
 
-logging.getLogger("pyrogram").setLevel(logging.WARNING)
+log = logging.getLogger(__name__)
 
 @Client.on_message(filters.photo)
 async def save_photo(c,m):
     v = await m.reply_text("Saving Thumbnail",True)
     if m.media_group_id is not None:
-        # album is sent
         download_location = Config.DOWNLOAD_LOCATION + "/thumb/" + str(m.from_user.id) + "/" + str(m.media_group_id) + "/"
-        if not os.path.isdir(download_location):
-            os.mkdir(download_location)
-        await df_thumb(m.from_user.id, m.message_id)
+        os.makedirs(download_location, exist_ok=True)
+        await df_thumb(m.from_user.id, m.id)
         await c.download_media(
             message=m,
             file_name=download_location
         )
     else:
-        # received single photo
         download_location = Config.DOWNLOAD_LOCATION + "/thumb/" + str(m.from_user.id) + ".jpg"
-        await df_thumb(m.from_user.id, m.message_id)
+        await df_thumb(m.from_user.id, m.id)
         await c.download_media(
             message=m,
             file_name=download_location
