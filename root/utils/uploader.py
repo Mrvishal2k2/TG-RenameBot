@@ -5,7 +5,8 @@ This file is a part of mrvishal2k2 rename repo
 Dont kang !!!
 © Mrvishal2k2
 '''
-import logging
+import os, time, asyncio, \
+    requests, shutil, random, logging
 logging.basicConfig(
     level=logging.DEBUG,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -13,13 +14,6 @@ logging.basicConfig(
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 logger = logging.getLogger(__name__)
 
-import asyncio
-import pyrogram
-import os
-import time
-import requests
-import shutil
-import random
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from PIL import Image

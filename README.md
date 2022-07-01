@@ -1,20 +1,15 @@
 # TG-RenameBot
 A better rename and convert bot with upload mode option 
-and Auto detection !!
-
-* **Language:** [Python3](https://www.python.org)
-* **Library:** [Pyrogram](https://docs.pyrogram.org)
+and Auto detection written in [Python3](https://www.python.org) 
+using [Pyrogram](https://docs.pyrogram.org)!!
 
 ### Installation
-
-#### Easy Way 
-Use [Rename Robot](https://t.me/RenameDuniaBot) 
 
 #### The Simple Way
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-#### Hard Way (VPS)
-* This is just a demo of commands to use
+#### BEST WAY (VPS)
+* This is just a demo of commands
 ```
 git clone https://github.com/mrvishal2k2/TG-RenameBot
 virtualenv -p /usr/bin/python3 venv
@@ -25,8 +20,7 @@ python3 bot.py
 
 ### Developer 
 * Telegram [Mrvishal2k2](https://t.me/Mrvishal_2k2) 
-* You can checkout my bots At [BotDunia](https://t.me/BotDunia)
- 
+* You can checkout my works at [BotDunia](https://t.me/BotDunia)
 
 #### Required Variables
 
@@ -72,6 +66,7 @@ log - admin cmd
 * Good to see if you give me credits if you are using !!
 * This is only for personal use !! Don't make a Bot channel Business with this !!
 * Pull Requests are always accepted but shouldn't involve increasing complexity of deploying
+
 ## Credits 
 * Spechide as always ❤️
 * And everyone in this Journey 
