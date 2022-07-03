@@ -39,7 +39,7 @@ async def uploader(bot,file, update, msg,as_file=False):
            await bot.send_document(
                document=file,
                chat_id=update.chat.id,
-               reply_to_message_id=update.message_id,
+               reply_to_message_id=update.id,
                disable_notification=True,
                force_document=True,
                thumb=thumb_image_path,
@@ -53,6 +53,7 @@ async def uploader(bot,file, update, msg,as_file=False):
         except FloodWait as e:
             logger.info(f"Got Flood Wait of {e.x} second me sleeping now...")
             await asyncio.sleep(e.x)
+            return await uploader(bot,file, update, msg,as_file)
         except Exception as er:
             logger.info(str(er))
         if thumb_image_path is not None:
@@ -90,20 +91,20 @@ async def uploader(bot,file, update, msg,as_file=False):
              # upload video..
              try:
                 await update.reply_video(
-         	  video=file,
-         	  quote=True,
-         	  duration=duration,
-         	  width=width,
-         	  height=height,
-         	  thumb=thumb_image_path,
-                  disable_notification=True,
-                  caption=filename,
-         	  supports_streaming=True,
-         	  progress=progress_for_pyrogram,
-                  progress_args=(
-        	         Translation.UPLOAD_MSG,
-        	   	     msg,
-     	      	     start_time
+         	        video=file,
+         	        quote=True,
+         	        duration=duration,
+         	        width=width,
+         	        height=height,
+         	        thumb=thumb_image_path,
+                    disable_notification=True,
+                    caption=filename,
+         	        supports_streaming=True,
+         	        progress=progress_for_pyrogram,
+                        progress_args=(
+        	            Translation.UPLOAD_MSG,
+        	   	        msg,
+     	      	        start_time
         	   	     ))
              except FloodWait as e:
                  logger.info(f"Got Flood wait of {e.x} seconds ")
