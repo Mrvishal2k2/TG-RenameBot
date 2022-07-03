@@ -26,15 +26,10 @@ async def start_msg(c, m):
         await m.reply_text(
             text=Translation.START_TEXT,
             quote=True,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(
-                            "Owner ", url=f"https://t.me/{Config.OWNER_USERNAME}"
-                        )
-                    ]
-                ]
-            ),
+            reply_markup=InlineKeyboardMarkup([[
+                InlineKeyboardButton(
+                    "Owner ", url=f"https://t.me/{Config.OWNER_USERNAME}")
+            ]]),
             disable_web_page_preview=True,
         )
     except Exception as e:
@@ -50,8 +45,7 @@ async def help_user(c, m):
 
 
 @Client.on_message(
-    filters.command("log") & filters.private & filters.user(Config.OWNER_ID)
-)
+    filters.command("log") & filters.private & filters.user(Config.OWNER_ID))
 async def log_msg(c, m):
     z = await m.reply_text("Processing..", True)
     if os.path.exists("Log.txt"):

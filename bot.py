@@ -33,6 +33,7 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 
 class Bot(Client):
+
     def __init__(self):
         super().__init__(
             name="RENAMEBOT",

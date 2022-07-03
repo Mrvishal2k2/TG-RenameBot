@@ -22,8 +22,7 @@ log = logging.getLogger(__name__)
 
 
 @Client.on_callback_query(
-    filters.create(lambda _, __, query: query.data.startswith("rename"))
-)
+    filters.create(lambda _, __, query: query.data.startswith("rename")))
 async def rename_call(c, m):
 
     mode = "File" if m.data == "rename_file" else "Video"
@@ -45,8 +44,7 @@ async def rep_rename_call(c, m):
         get_mode = "Video"
 
     if (m.reply_to_message.reply_markup) and isinstance(
-        m.reply_to_message.reply_markup, ForceReply
-    ):
+            m.reply_to_message.reply_markup, ForceReply):
         if get_mode == "File":
             asyncio.create_task(renamer(c, m, as_file=True))
         else:
@@ -59,14 +57,8 @@ async def renamer(c, m, as_file=False):
     bot_msg = await c.get_messages(m.chat.id, m.reply_to_message.id)
     todown = bot_msg.reply_to_message  # msg with media
     new_f_name = m.text  # new name
-    media = (
-        todown.document
-        or todown.video
-        or todown.audio
-        or todown.voice
-        or todown.video_note
-        or todown.animation
-    )
+    media = (todown.document or todown.video or todown.audio or todown.voice
+             or todown.video_note or todown.animation)
 
     try:
         media_name = media.file_name
@@ -78,7 +70,8 @@ async def renamer(c, m, as_file=False):
 
     if len(new_f_name) > 64:
         return await m.reply_text(
-            text=f"Limits of telegram file name is 64 charecters only\nReduce some and try again."
+            text=
+            f"Limits of telegram file name is 64 charecters only\nReduce some and try again."
         )
 
     d_msg = await m.reply_text(Translation.DOWNLOAD_MSG, True)
@@ -113,9 +106,8 @@ async def renamer(c, m, as_file=False):
         u_msg = await m.reply_text(Translation.UPLOAD_MSG, quote=True)
 
     # try to get thumb to use for later upload
-    thumb_image_path = (
-        Config.DOWNLOAD_LOCATION + "/thumb/" + str(m.from_user.id) + ".jpg"
-    )
+    thumb_image_path = (Config.DOWNLOAD_LOCATION + "/thumb/" +
+                        str(m.from_user.id) + ".jpg")
     if not os.path.exists(thumb_image_path):
         mes = await thumb(m.from_user.id)
         if mes is not None:
@@ -141,8 +133,7 @@ async def renamer(c, m, as_file=False):
 
 
 @Client.on_callback_query(
-    filters.create(lambda _, __, query: query.data.startswith("cancel"))
-)
+    filters.create(lambda _, __, query: query.data.startswith("cancel")))
 async def cancel_call(c, m):
     if m.data != "cancel":
         await m.message.reply_to_message.delete()
@@ -150,8 +141,7 @@ async def cancel_call(c, m):
 
 
 @Client.on_callback_query(
-    filters.create(lambda _, __, query: query.data.startswith("convert"))
-)
+    filters.create(lambda _, __, query: query.data.startswith("convert")))
 async def convert_call(c, m):
 
     usr_msg = m.message.reply_to_message
@@ -185,9 +175,8 @@ async def convert_call(c, m):
         u_msg = await usr_msg.reply_text(Translation.UPLOAD_MSG, quote=True)
 
     # try to get thumb to use later while uploading..
-    thumb_image_path = (
-        Config.DOWNLOAD_LOCATION + "/thumb/" + str(m.from_user.id) + ".jpg"
-    )
+    thumb_image_path = (Config.DOWNLOAD_LOCATION + "/thumb/" +
+                        str(m.from_user.id) + ".jpg")
     if not os.path.exists(thumb_image_path):
         mes = await thumb(m.from_user.id)
         if mes is not None:

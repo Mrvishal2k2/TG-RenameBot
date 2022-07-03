@@ -28,21 +28,15 @@ log = logging.getLogger(__name__)
 async def save_photo(c, m):
     v = await m.reply_text("Saving Thumbnail", True)
     if m.media_group_id is not None:
-        download_location = (
-            Config.DOWNLOAD_LOCATION
-            + "/thumb/"
-            + str(m.from_user.id)
-            + "/"
-            + str(m.media_group_id)
-            + "/"
-        )
+        download_location = (Config.DOWNLOAD_LOCATION + "/thumb/" +
+                             str(m.from_user.id) + "/" +
+                             str(m.media_group_id) + "/")
         os.makedirs(download_location, exist_ok=True)
         await df_thumb(m.from_user.id, m.id)
         await c.download_media(message=m, file_name=download_location)
     else:
-        download_location = (
-            Config.DOWNLOAD_LOCATION + "/thumb/" + str(m.from_user.id) + ".jpg"
-        )
+        download_location = (Config.DOWNLOAD_LOCATION + "/thumb/" +
+                             str(m.from_user.id) + ".jpg")
         await df_thumb(m.from_user.id, m.id)
         await c.download_media(message=m, file_name=download_location)
         try:
@@ -53,7 +47,8 @@ async def save_photo(c, m):
 
 @Client.on_message(filters.command(["deletethumb"]))
 async def delete_thumbnail(c, m):
-    download_location = Config.DOWNLOAD_LOCATION + "/thumb/" + str(m.from_user.id)
+    download_location = Config.DOWNLOAD_LOCATION + "/thumb/" + str(
+        m.from_user.id)
     try:
         os.remove(download_location + ".jpg")
         await del_thumb(m.from_user.id)
@@ -64,9 +59,8 @@ async def delete_thumbnail(c, m):
 
 @Client.on_message(filters.command(["showthumb"]))
 async def show_thumbnail(c, m):
-    thumb_image_path = (
-        Config.DOWNLOAD_LOCATION + "/thumb/" + str(m.from_user.id) + ".jpg"
-    )
+    thumb_image_path = (Config.DOWNLOAD_LOCATION + "/thumb/" +
+                        str(m.from_user.id) + ".jpg")
     msgg = await m.reply_text("Checking Thumbnail...", quote=True)
 
     if not os.path.exists(thumb_image_path):
@@ -92,6 +86,7 @@ async def show_thumbnail(c, m):
 
         await m.reply_photo(
             photo=thumb_image_path,
-            caption="This is the Saved Thumbnail!!!\nYou Can delete this by using \n/deletethumb Command",
+            caption=
+            "This is the Saved Thumbnail!!!\nYou Can delete this by using \n/deletethumb Command",
             quote=True,
         )

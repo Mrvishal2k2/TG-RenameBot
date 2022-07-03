@@ -26,8 +26,8 @@ from root.utils.utils import progress_for_pyrogram
 from root.utils.utils import take_screen_shot
 
 logging.basicConfig(
-    level=logging.DEBUG, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-)
+    level=logging.DEBUG,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 logger = logging.getLogger(__name__)
 
@@ -40,13 +40,13 @@ async def uploader(bot, file, update, msg, as_file=False):
     if Config.CUSTOM_CAPTION:
         filename = filename + "\n" + Config.CUSTOM_CAPTION
     # Thumb Location parameter
-    thumb_location = Config.DOWNLOAD_LOCATION + "/thumb/" + str(update.chat.id) + ".jpg"
+    thumb_location = Config.DOWNLOAD_LOCATION + "/thumb/" + str(
+        update.chat.id) + ".jpg"
     thumb_image_path = None
     if as_file:
         if os.path.exists(thumb_location):
             thumb_image_path = await copy_file(
-                thumb_location, os.path.dirname(os.path.abspath(file))
-            )
+                thumb_location, os.path.dirname(os.path.abspath(file)))
         try:
             await bot.send_document(
                 document=file,
@@ -80,8 +80,7 @@ async def uploader(bot, file, update, msg, as_file=False):
 
             if os.path.exists(thumb_location):
                 thumb_image_path = await copy_file(
-                    thumb_location, os.path.dirname(os.path.abspath(file))
-                )
+                    thumb_location, os.path.dirname(os.path.abspath(file)))
             else:
                 thumb_image_path = await take_screen_shot(
                     file,
@@ -95,7 +94,8 @@ async def uploader(bot, file, update, msg, as_file=False):
                     width = metadata.get("width")
                 if metadata.has("height"):
                     height = metadata.get("height")
-                Image.open(thumb_image_path).convert("RGB").save(thumb_image_path)
+                Image.open(thumb_image_path).convert("RGB").save(
+                    thumb_image_path)
                 img = Image.open(thumb_image_path)
                 img.resize((320, height))
                 img.save(thumb_image_path, "JPEG")
@@ -138,8 +138,7 @@ async def uploader(bot, file, update, msg, as_file=False):
 
             if os.path.exists(thumb_location):
                 thumb_image_path = await copy_file(
-                    thumb_location, os.path.dirname(os.path.abspath(file))
-                )
+                    thumb_location, os.path.dirname(os.path.abspath(file)))
 
             # upload now
             try:
@@ -166,8 +165,7 @@ async def uploader(bot, file, update, msg, as_file=False):
         else:
             if os.path.exists(thumb_location):
                 thumb_image_path = await copy_file(
-                    thumb_location, os.path.dirname(os.path.abspath(file))
-                )
+                    thumb_location, os.path.dirname(os.path.abspath(file)))
             try:
                 await update.reply_document(
                     document=file,
@@ -179,7 +177,8 @@ async def uploader(bot, file, update, msg, as_file=False):
                     progress_args=(Translation.UPLOAD_MSG, msg, start_time),
                 )
             except FloodWait as e:
-                logger.info(f"Got Flood wait of {e.x} seconds Byee mr sleeping ...")
+                logger.info(
+                    f"Got Flood wait of {e.x} seconds Byee mr sleeping ...")
                 await asyncio.sleep(e.x)
             except Exception as er:
                 logger.info(str(er))
