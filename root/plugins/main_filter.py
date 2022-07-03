@@ -37,7 +37,6 @@ async def rename_filter(c,m):
         text=text,
         quote=True,
         reply_markup=InlineKeyboardMarkup(button),
-        parse_mode="markdown",
         disable_web_page_preview=True
     )
   except Exception as e:
