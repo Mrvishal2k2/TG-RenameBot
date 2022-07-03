@@ -7,12 +7,8 @@ logger = logging.getLogger(__name__)
 import math
 import os
 import time
-import requests
 import asyncio
 from shutil import copyfile
-from root.config import Config
-from hachoir.metadata import extractMetadata
-from hachoir.parser import createParser
 
 async def progress_for_pyrogram(
     current,

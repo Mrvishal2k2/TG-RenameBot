@@ -6,12 +6,9 @@ Dont kang !!!
 © Mrvishal2k2
 '''
 
-import  numpy, os, time, pyrogram, logging
-from PIL import Image
+import  os, logging
 from pyrogram import Client,filters
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from root.config import Config
-from root.messages import Translation
 from root.utils import *
 
 

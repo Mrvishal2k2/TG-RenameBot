@@ -4,7 +4,7 @@ This file is a part of mrvishal2k2 rename repo
 Dont kang !!!
 © Mrvishal2k2
 '''
-import logging, pyrogram
+import logging
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
