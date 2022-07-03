@@ -27,8 +27,6 @@ logging.basicConfig(level=logging.DEBUG,
 )
 
 log = logging.getLogger(__name__)
-
-import pyrogram
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 

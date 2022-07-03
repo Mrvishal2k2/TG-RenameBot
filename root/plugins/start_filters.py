@@ -5,7 +5,7 @@ This file is a part of mrvishal2k2 rename repo
 Dont kang !!!
 © Mrvishal2k2
 '''
-import os, logging, pyrogram
+import os, logging
 log = logging.getLogger(__name__)
 
 from pyrogram import Client,filters

@@ -4,9 +4,9 @@ This file is a part of mrvishal2k2 rename repo
 Dont kang !!!
 © Mrvishal2k2
 '''
-import pyrogram, logging, asyncio
+import logging, asyncio
 from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup,ForceReply
+from pyrogram.types import ForceReply
 from root.utils import *
 from root.messages import Translation
 from root.config import Config
