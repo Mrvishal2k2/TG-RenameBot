@@ -1,19 +1,12 @@
-from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker, scoped_session
-
-import os
 import asyncio
+import os
 import threading
-from sqlalchemy import (
-    Column,
-    Integer,
-    Boolean,
-    String,
-    ForeignKey,
-    UniqueConstraint,
-    func,
-)
+
+from sqlalchemy import (Boolean, Column, ForeignKey, Integer, String,
+                        UniqueConstraint, create_engine, func)
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import scoped_session, sessionmaker
+
 from root.config import Config
 
 
