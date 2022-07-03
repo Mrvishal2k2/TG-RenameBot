@@ -4,7 +4,9 @@ This file is a part of mrvishal2k2 rename repo
 Dont kang !!!
 © Mrvishal2k2
 '''
-import os, logging
+import pyrogram
+import os
+import logging
 from root.config import Config
 from logging.handlers import RotatingFileHandler
 from pyrogram import Client
@@ -17,18 +19,17 @@ logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     datefmt="%d-%b-%y %H:%M:%S",
                     handlers=[
-        RotatingFileHandler(
-            "Log.txt",
-            maxBytes=1000000,
-            backupCount=10
-        ),
-        logging.StreamHandler()
-    ]
-)
+                        RotatingFileHandler(
+                            "Log.txt",
+                            maxBytes=1000000,
+                            backupCount=10
+                        ),
+                        logging.StreamHandler()
+                    ]
+                    )
 
 log = logging.getLogger(__name__)
 
-import pyrogram
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 
@@ -42,12 +43,15 @@ class Bot(Client):
             plugins={"root": "root/plugins"},
             sleep_threshold=5
         )
+
     async def start(self):
         await super().start()
-        os.makedirs(Config.DOWNLOAD_LOCATION,exist_ok=True)
+        os.makedirs(Config.DOWNLOAD_LOCATION, exist_ok=True)
         log.info("<<[Bot Started]>>")
+
     async def stop(self, *args):
         await super().stop()
         log.info("<<[Bot Stopped]>>")
+
 
 Bot().run()
