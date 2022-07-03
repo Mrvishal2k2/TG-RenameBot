@@ -1,14 +1,7 @@
 {
   "name": "TG-RenameBot",
   "description": "Telegram's best Rename Bot. Create your Fork now.",
-  "keywords": [
-    "telegram",
-    "utility",
-    "best",
-    "Rename",
-    "Convert",
-    "Caption"
-  ],
+  "keywords": ["telegram", "utility", "best", "Rename", "Convert", "Caption"],
   "website": "https://github.com/mrvishal2k2",
   "repository": "https://github.com/mrvishal2k2/TG-RenameBot/tree/main",
   "logo": "https://telegra.ph//file/b3461e7795bb258688623.jpg",
