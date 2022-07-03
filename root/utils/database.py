@@ -30,15 +30,14 @@ Thumbnail.__table__.create(checkfirst=True)
 
 async def df_thumb(id, msg_id):
     with INSERTION_LOCK:
-        msg = SESSION.query(Thumbnail).get(id)
-        if not msg:
-            msg = Thumbnail(id, msg_id)
-            SESSION.add(msg)
-            SESSION.flush()
-        else:
+        if msg := SESSION.query(Thumbnail).get(id):
             SESSION.delete(msg)
             file = Thumbnail(id, msg_id)
             SESSION.add(file)
+        else:
+            msg = Thumbnail(id, msg_id)
+            SESSION.add(msg)
+            SESSION.flush()
         SESSION.commit()
 
 async def del_thumb(id):
@@ -49,7 +48,6 @@ async def del_thumb(id):
 
 async def thumb(id):
     try:
-        t = SESSION.query(Thumbnail).get(id)
-        return t
+        return SESSION.query(Thumbnail).get(id)
     finally:
         SESSION.close()
