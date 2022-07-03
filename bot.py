@@ -4,12 +4,9 @@ This file is a part of mrvishal2k2 rename repo
 Dont kang !!!
 © Mrvishal2k2
 """
-import os, logging
+import os, pyrogram, logging
 from logging.handlers import RotatingFileHandler
-
-import pyrogram
 from pyrogram import Client
-
 from root.config import Config
 
 if os.path.exists("Log.txt"):
