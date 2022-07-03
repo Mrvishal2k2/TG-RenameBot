@@ -4,8 +4,7 @@ This file is a part of mrvishal2k2 rename repo
 Dont kang !!!
 © Mrvishal2k2
 """
-import logging
-import os
+import os, logging
 from logging.handlers import RotatingFileHandler
 
 import pyrogram
