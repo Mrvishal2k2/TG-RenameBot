@@ -8,9 +8,11 @@ import asyncio
 import logging
 
 import pyrogram
-from pyrogram import Client, filters
-from pyrogram.types import (ForceReply, InlineKeyboardButton,
-                            InlineKeyboardMarkup)
+from pyrogram import Client
+from pyrogram import filters
+from pyrogram.types import ForceReply
+from pyrogram.types import InlineKeyboardButton
+from pyrogram.types import InlineKeyboardMarkup
 
 from root.config import Config
 from root.messages import Translation

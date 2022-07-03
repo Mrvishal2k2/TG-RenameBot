@@ -5,7 +5,6 @@ This file is a part of mrvishal2k2 rename repo
 Dont kang !!!
 © Mrvishal2k2
 """
-
 import logging
 import os
 import time
@@ -13,8 +12,10 @@ import time
 import numpy
 import pyrogram
 from PIL import Image
-from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram import Client
+from pyrogram import filters
+from pyrogram.types import InlineKeyboardButton
+from pyrogram.types import InlineKeyboardMarkup
 
 from root.config import Config
 from root.messages import Translation
