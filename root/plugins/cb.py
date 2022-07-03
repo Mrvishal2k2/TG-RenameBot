@@ -4,15 +4,10 @@ This file is a part of mrvishal2k2 rename repo
 Dont kang !!!
 © Mrvishal2k2
 """
-import asyncio
-import logging
+import asyncio, pyrogram, logging
 
-import pyrogram
-from pyrogram import Client
-from pyrogram import filters
-from pyrogram.types import ForceReply
-from pyrogram.types import InlineKeyboardButton
-from pyrogram.types import InlineKeyboardMarkup
+from pyrogram import Client, filters
+from pyrogram.types import ForceReply, InlineKeyboardButton, InlineKeyboardMarkup
 
 from root.config import Config
 from root.messages import Translation
