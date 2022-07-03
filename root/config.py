@@ -1,10 +1,10 @@
-'''
+"""
 © Mrvishal2k2
 RenameBot
 This file is a part of mrvishal2k2 rename repo 
 Dont kang !!!
 © Mrvishal2k2
-'''
+"""
 import os
 
 

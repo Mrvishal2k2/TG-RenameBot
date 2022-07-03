@@ -1,9 +1,9 @@
-'''
+"""
 RenameBot
 This file is a part of mrvishal2k2 rename repo 
 Dont kang !!!
 © Mrvishal2k2
-'''
+"""
 import pyrogram
 import os
 import logging
@@ -15,18 +15,15 @@ if os.path.exists("Log.txt"):
     with open("Log.txt", "r+") as f_d:
         f_d.truncate(0)
 
-logging.basicConfig(level=logging.DEBUG,
-                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    datefmt="%d-%b-%y %H:%M:%S",
-                    handlers=[
-                        RotatingFileHandler(
-                            "Log.txt",
-                            maxBytes=1000000,
-                            backupCount=10
-                        ),
-                        logging.StreamHandler()
-                    ]
-                    )
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    datefmt="%d-%b-%y %H:%M:%S",
+    handlers=[
+        RotatingFileHandler("Log.txt", maxBytes=1000000, backupCount=10),
+        logging.StreamHandler(),
+    ],
+)
 
 log = logging.getLogger(__name__)
 
@@ -41,7 +38,7 @@ class Bot(Client):
             api_hash=Config.API_HASH,
             bot_token=Config.TG_BOT_TOKEN,
             plugins={"root": "root/plugins"},
-            sleep_threshold=5
+            sleep_threshold=5,
         )
 
     async def start(self):

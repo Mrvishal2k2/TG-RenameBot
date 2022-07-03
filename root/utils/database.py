@@ -5,7 +5,15 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 import os
 import asyncio
 import threading
-from sqlalchemy import Column, Integer, Boolean, String, ForeignKey, UniqueConstraint, func
+from sqlalchemy import (
+    Column,
+    Integer,
+    Boolean,
+    String,
+    ForeignKey,
+    UniqueConstraint,
+    func,
+)
 from root.config import Config
 
 

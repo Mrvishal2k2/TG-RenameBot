@@ -1,10 +1,10 @@
-'''
+"""
 RenameBot
 Thanks to Spechide Unkle as always for the concept  ♥️
 This file is a part of mrvishal2k2 rename repo 
 Dont kang !!!
 © Mrvishal2k2
-'''
+"""
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram import Client, filters
 from root.messages import Translation
@@ -12,6 +12,7 @@ from root.config import Config
 import os
 import logging
 import pyrogram
+
 log = logging.getLogger(__name__)
 
 
@@ -21,12 +22,16 @@ async def start_msg(c, m):
         await m.reply_text(
             text=Translation.START_TEXT,
             quote=True,
-            reply_markup=InlineKeyboardMarkup([[
-                InlineKeyboardButton(
-                    "Owner ",
-                    url=f"https://t.me/{Config.OWNER_USERNAME}")
-            ]]),
-            disable_web_page_preview=True
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(
+                            "Owner ", url=f"https://t.me/{Config.OWNER_USERNAME}"
+                        )
+                    ]
+                ]
+            ),
+            disable_web_page_preview=True,
         )
     except Exception as e:
         log.error(str(e))
@@ -40,7 +45,9 @@ async def help_user(c, m):
         log.info(str(e))
 
 
-@Client.on_message(filters.command("log") & filters.private & filters.user(Config.OWNER_ID))
+@Client.on_message(
+    filters.command("log") & filters.private & filters.user(Config.OWNER_ID)
+)
 async def log_msg(c, m):
     z = await m.reply_text("Processing..", True)
     if os.path.exists("Log.txt"):
