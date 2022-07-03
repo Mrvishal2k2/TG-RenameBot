@@ -19,14 +19,6 @@ log = logging.getLogger(__name__)
 async def rename_call(c,m):
 
   mode = "File" if m.data=="rename_file" else "Video"
-
-  '''
-  if m.data=="rename_file":
-    mode = "File"
-  elif m.data == "rename_video":
-    mode = "Video"
-  '''
-
   await m.message.delete()
   await c.send_message(
     text=f"Mode: {mode} \nNow send me new file name without extension",
