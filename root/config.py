@@ -8,7 +8,7 @@ Dont kang !!!
 import os
 
 
-class Config(object):
+class Config:
     APP_ID = int(os.environ.get("APP_ID"))
     API_HASH = os.environ.get("API_HASH")
     TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN")

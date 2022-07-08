@@ -5,8 +5,6 @@ Dont kang !!!
 © Mrvishal2k2
 """
 import logging
-
-import pyrogram
 from pyrogram import Client
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton

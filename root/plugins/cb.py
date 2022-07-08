@@ -4,10 +4,12 @@ This file is a part of mrvishal2k2 rename repo
 Dont kang !!!
 © Mrvishal2k2
 """
-import asyncio, pyrogram, logging
+import asyncio
+import pyrogram
+import logging
 
 from pyrogram import Client, filters
-from pyrogram.types import ForceReply, InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram.types import ForceReply
 
 from root.config import Config
 from root.messages import Translation
@@ -66,7 +68,7 @@ async def renamer(c, m, as_file=False):
     if len(new_f_name) > 64:
         return await m.reply_text(
             text=
-            f"Limits of telegram file name is 64 charecters only\nReduce some and try again."
+            "Limits of telegram file name is 64 charecters only\nReduce some and try again."
         )
 
     d_msg = await m.reply_text(Translation.DOWNLOAD_MSG, True)

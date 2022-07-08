@@ -7,18 +7,10 @@ Dont kang !!!
 """
 import logging
 import os
-import time
-
-import numpy
-import pyrogram
-from PIL import Image
 from pyrogram import Client
 from pyrogram import filters
-from pyrogram.types import InlineKeyboardButton
-from pyrogram.types import InlineKeyboardMarkup
 
 from root.config import Config
-from root.messages import Translation
 from root.utils import *
 
 log = logging.getLogger(__name__)
@@ -68,7 +60,6 @@ async def show_thumbnail(c, m):
         if mes is not None:
             msgg = await c.get_messages(m.chat.id, mes.msg_id)
             await msgg.download(file_name=thumb_image_path)
-            thumb_image_path = thumb_image_path
         else:
             thumb_image_path = None
 

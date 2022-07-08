@@ -9,10 +9,7 @@ import asyncio
 import logging
 import os
 import random
-import shutil
 import time
-
-import requests
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from PIL import Image
@@ -21,7 +18,6 @@ from pyrogram.errors import FloodWait
 from root.config import Config
 from root.messages import Translation
 from root.utils.utils import copy_file
-from root.utils.utils import humanbytes
 from root.utils.utils import progress_for_pyrogram
 from root.utils.utils import take_screen_shot
 

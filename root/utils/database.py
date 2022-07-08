@@ -1,15 +1,7 @@
-import asyncio
-import os
 import threading
-
-from sqlalchemy import Boolean
 from sqlalchemy import Column
 from sqlalchemy import create_engine
-from sqlalchemy import ForeignKey
-from sqlalchemy import func
 from sqlalchemy import Integer
-from sqlalchemy import String
-from sqlalchemy import UniqueConstraint
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import scoped_session
 from sqlalchemy.orm import sessionmaker
