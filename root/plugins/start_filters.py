@@ -1,47 +1,53 @@
-'''
+"""
 RenameBot
 Thanks to Spechide Unkle as always for the concept  ♥️
-This file is a part of mrvishal2k2 rename repo 
+This file is a part of mrvishal2k2 rename repo
 Dont kang !!!
 © Mrvishal2k2
-'''
-import os, logging, pyrogram
-log = logging.getLogger(__name__)
+"""
+import logging
+import os
+from pyrogram import Client
+from pyrogram import filters
+from pyrogram.types import InlineKeyboardButton
+from pyrogram.types import InlineKeyboardMarkup
 
-from pyrogram import Client,filters
-from pyrogram.types import InlineKeyboardMarkup,InlineKeyboardButton
 from root.config import Config
 from root.messages import Translation
 
+log = logging.getLogger(__name__)
+
+
 @Client.on_message(filters.command("start"))
-async def start_msg(c,m):
+async def start_msg(c, m):
     try:
-       await m.reply_text(
+        await m.reply_text(
             text=Translation.START_TEXT,
-            quote=True, 
+            quote=True,
             reply_markup=InlineKeyboardMarkup([[
-               InlineKeyboardButton(
-               "Owner ", 
-               url=f"https://t.me/{Config.OWNER_USERNAME}")
-             ]]) , 
-            disable_web_page_preview=True
-      ) 
+                InlineKeyboardButton(
+                    "Owner ", url=f"https://t.me/{Config.OWNER_USERNAME}")
+            ]]),
+            disable_web_page_preview=True,
+        )
     except Exception as e:
         log.error(str(e))
 
+
 @Client.on_message(filters.command("help"))
-async def help_user(c,m):
+async def help_user(c, m):
     try:
-       await m.reply_text(text=Translation.HELP_USER,quote=True)
+        await m.reply_text(text=Translation.HELP_USER, quote=True)
     except Exception as e:
         log.info(str(e))
 
 
-@Client.on_message(filters.command("log") & filters.private & filters.user(Config.OWNER_ID))
-async def log_msg(c,m):
-  z =await m.reply_text("Processing..", True)
-  if os.path.exists("Log.txt"):
-     await m.reply_document("Log.txt", True)
-     await z.delete()
-  else:
-    await z.edit_text("Log file not found")
+@Client.on_message(
+    filters.command("log") & filters.private & filters.user(Config.OWNER_ID))
+async def log_msg(c, m):
+    z = await m.reply_text("Processing..", True)
+    if os.path.exists("Log.txt"):
+        await m.reply_document("Log.txt", True)
+        await z.delete()
+    else:
+        await z.edit_text("Log file not found")

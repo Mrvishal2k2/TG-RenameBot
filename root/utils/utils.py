@@ -7,12 +7,8 @@ logger = logging.getLogger(__name__)
 import math
 import os
 import time
-import requests
 import asyncio
 from shutil import copyfile
-from root.config import Config
-from hachoir.metadata import extractMetadata
-from hachoir.parser import createParser
 
 async def progress_for_pyrogram(
     current,
@@ -43,7 +39,6 @@ async def progress_for_pyrogram(
             humanbytes(current),
             humanbytes(total),
             humanbytes(speed),
-            # elapsed_time if elapsed_time != '' else "0 s",
             estimated_total_time if estimated_total_time != '' else "0 s"
         )
         try:
@@ -100,7 +95,6 @@ async def take_screen_shot(video_file, output_directory, ttl):
         "1",
         out_put_file_name
     ]
-    # width = "90"
     process = await asyncio.create_subprocess_exec(
         *file_genertor_command,
         # stdout must a pipe to be accessible as process.stdout
