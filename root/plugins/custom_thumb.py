@@ -21,7 +21,7 @@ log = logging.getLogger(__name__)
 async def save_photo(c,m):
     v = await m.reply_text("Saving Thumbnail",True)
     if m.media_group_id is not None:
-        download_location = f"{Config.DOWNLOAD_LOCATION}/thumb/{str(m.from_user.id)}/{str(m.media_group_id)}/"
+        download_location = f"{Config.DOWNLOAD_LOCATION}/thumb/{m.from_user.id}/{str(m.media_group_id)}/"
 
         os.makedirs(download_location, exist_ok=True)
         await df_thumb(m.from_user.id, m.id)
