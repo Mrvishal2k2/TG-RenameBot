@@ -44,9 +44,8 @@ async def save_photo(c,m):
 
 @Client.on_message(filters.command(["deletethumb"]))
 async def delete_thumbnail(c,m):
-    download_location = f"{Config.DOWNLOAD_LOCATION}/thumb/{str(m.from_user.id)}"
     try:
-        os.remove(f"{download_location}.jpg")
+        os.remove(f"{Config.DOWNLOAD_LOCATION}/thumb/{m.from_user.id}.jpg")
         await del_thumb(m.from_user.id)
     except:
         pass
