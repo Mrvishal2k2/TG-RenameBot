@@ -30,9 +30,7 @@ async def save_photo(c,m):
             file_name=download_location
         )
     else:
-        download_location = (
-            f"{Config.DOWNLOAD_LOCATION}/thumb/{str(m.from_user.id)}.jpg"
-        )
+        download_location = f"{Config.DOWNLOAD_LOCATION}/thumb/{m.from_user.id}.jpg"
 
         await df_thumb(m.from_user.id, m.id)
         await c.download_media(
