@@ -53,8 +53,7 @@ async def delete_thumbnail(c,m):
 
 @Client.on_message(filters.command(["showthumb"]))
 async def show_thumbnail(c,m):
-    thumb_image_path = (
-        f"{Config.DOWNLOAD_LOCATION}/thumb/{str(m.from_user.id)}.jpg"
+    thumb_image_path = f"{Config.DOWNLOAD_LOCATION}/thumb/{m.from_user.id}.jpg"
     )
 
     msgg = await m.reply_text("Checking Thumbnail...",quote=True)
