@@ -30,7 +30,12 @@ Thumbnail.__table__.create(checkfirst=True)
 
 async def df_thumb(id, msg_id):
     with INSERTION_LOCK:
-        if msg := SESSION.query(Thumbnail).get(id):
+        msg = SESSION.query(Thumbnail).get(id)
+        if not msg:
+            msg = Thumbnail(id, msg_id)
+            SESSION.add(msg)
+            SESSION.flush()
+        else:
             SESSION.delete(msg)
             file = Thumbnail(id, msg_id)
             SESSION.add(file)
