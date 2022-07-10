@@ -7,6 +7,7 @@ using [Pyrogram](https://docs.pyrogram.org)!!
 
 #### The Simple Way
 Use this at your own risk as heroku suspended accounts on deploying due to overuse.
+</br>
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 #### BEST WAY (VPS)
@@ -45,6 +46,7 @@ log - admin cmd
 
 ### Support:
 * Join BotDunia channel
+</br>
 <a href="https://t.me/BotDunia"><img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white"></a>
 
 ### Follow on:
