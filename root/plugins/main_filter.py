@@ -10,7 +10,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 log = logging.getLogger(__name__)
 
-@Client.on_message(filters.document | filters.video | filters.audio | filters.voice | filters.video_note | filters.animation) 
+@Client.on_message(filters.document | filters.video | filters.audio | filters.voice | filters.video_note | filters.animation)
 async def rename_filter(c,m):
   media = m.document or m.video or m.audio or m.voice or m.video_note or m.animation
   ## couldn't add photo bcoz i want all photos to use as thumb..
@@ -24,12 +24,22 @@ async def rename_filter(c,m):
 
   text += "Select the desired Option"
   button.append([InlineKeyboardButton("Rename as File", callback_data="rename_file")])
-  # Thanks to albert for mime_type suggestion 
+  # Thanks to albert for mime_type suggestion
   if media.mime_type.startswith("video/"):
-    ## how the f the other formats can be uploaded as video 
-    button.append([InlineKeyboardButton("Rename as Video",callback_data="rename_video")])
-    button.append([InlineKeyboardButton("Convert as File",callback_data="convert_file")])
-    button.append([InlineKeyboardButton("Convert as Video",callback_data="convert_video")])
+    button.extend((
+        [
+            InlineKeyboardButton(
+                "Rename as Video", callback_data="rename_video")
+        ],
+        [
+            InlineKeyboardButton(
+                "Convert as File", callback_data="convert_file")
+        ],
+        [
+            InlineKeyboardButton(
+                "Convert as Video", callback_data="convert_video")
+        ],
+    ))
   button.append([InlineKeyboardButton("Cancel ❌",callback_data="cancel")])
 
   try:
