@@ -34,6 +34,7 @@ python3 bot.py
 * `OWNER_ID`: Owner's Userid for log command
 * `OWNER_USERNAME`: (Not mandatory) Owner's Username without @
 * `CUSTOM_CAPTION`: Custom Caption to use after Filename in caption
+* `UPDATE_CHANNEL`: without @  
 
 ## Commands:
 ```
