@@ -21,8 +21,8 @@ python3 bot.py
 ```
 
 ### Developer 
-* Telegram [Mrvishal2k2](https://t.me/Mrvishal_2k2) 
-* You can checkout my works at [BotDunia](https://t.me/BotDunia)
+* Telegram [Mrvishal2k2](https://t.me/DL_Bots_Support) 
+* You can checkout my works at [BotDunia](https://t.me/DL_Bots_Support)
 
 #### Required Variables
 
@@ -47,7 +47,7 @@ log - admin cmd
 ### Support:
 * Join BotDunia channel
 </br>
-<a href="https://t.me/BotDunia"><img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white"></a>
+<a href="https://t.me/DL_Bots_Support"><img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white"></a>
 
 ### Follow on:
 <p align="left">
