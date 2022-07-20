@@ -51,11 +51,11 @@ async def uploader(bot,file, update, msg,as_file=False):
         	      	     start_time
         	      	     ))
         except FloodWait as e:
-            logger.info(f"Got Flood Wait of {e.x} second me sleeping now...")
-            await asyncio.sleep(e.x)
-            return await uploader(bot,file, update, msg,as_file)
+            logger.info(f"Got Flood Wait of {e.value} second me sleeping now...")
+            await asyncio.sleep(e.value)
+            return await uploader(bot,file, update, msg,as_file=True)
         except Exception as er:
-            logger.info(str(er))
+            logger.error(str(er))
         if thumb_image_path is not None:
              os.remove(thumb_image_path)  
         
@@ -73,7 +73,6 @@ async def uploader(bot,file, update, msg,as_file=False):
                  thumb_image_path = await copy_file(thumb_location, os.path.dirname(os.path.abspath(file)))
              else:
                  thumb_image_path = await take_screen_shot(file, os.path.dirname(os.path.abspath(file)), random.randint(0, duration - 1))
-             
              
              if thumb_image_path is not None:
                  metadata = extractMetadata(createParser(thumb_image_path))
@@ -107,10 +106,11 @@ async def uploader(bot,file, update, msg,as_file=False):
      	      	        start_time
         	   	     ))
              except FloodWait as e:
-                 logger.info(f"Got Flood wait of {e.x} seconds ")
-                 await asyncio.sleep(e.x)
+                 logger.info(f"Got Flood wait of {e.value} seconds ")
+                 await asyncio.sleep(e.value)
+                 return await uploader(bot,file, update, msg,as_file=False)
              except Exception as er:
-                  logger.info(str(er))
+                  logger.error(str(er))
 
              if thumb_image_path is not None:
                 os.remove(thumb_image_path)  
@@ -148,33 +148,13 @@ async def uploader(bot,file, update, msg,as_file=False):
         	      	     start_time
         	      	     ))
             except FloodWait as e:
-                logger.info("Got Floodwait of {e.x} seconds so me sleeping ")
-                await asyncio.sleep(e.x)
+                logger.info(f"Got Floodwait of {e.value} seconds so me sleeping ")
+                await asyncio.sleep(e.value)
+                return await uploader(bot,file, update, msg,as_file=False)
             except Exception as er:
-                logger.info(str(er))
+                logger.error(str(er))
             if thumb_image_path is not None:
                 os.remove(thumb_image_path)  
         
          else:
-            if os.path.exists(thumb_location):
-              	thumb_image_path = await copy_file(thumb_location, os.path.dirname(os.path.abspath(file)))
-            try:
-               await update.reply_document(document=file,
-        	   quote=True,
-        	   thumb=thumb_image_path,
-                   progress=progress_for_pyrogram,
-                   caption=filename,
-                   disable_notification=True,
-                   progress_args=(
-        	      	     Translation.UPLOAD_MSG,
-        	      	     msg,
-        	      	     start_time
-        	      	     ))
-            except FloodWait as e:
-                logger.info(f"Got Flood wait of {e.x} seconds Byee mr sleeping ...")
-                await asyncio.sleep(e.x)
-            except Exception as er:
-                logger.info(str(er))
-            if thumb_image_path is not None:
-                 os.remove(thumb_image_path)  
-
+            return await uploader(bot,file, update, msg,as_file=True)
