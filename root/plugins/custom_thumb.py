@@ -43,7 +43,8 @@ async def delete_thumbnail(c,m):
     try:
         os.remove(download_location + ".jpg")
         await del_thumb(m.from_user.id)
-    except:
+    except Exception as e:
+        log.error(f"Error in removing thumb {e}")
         pass
     await m.reply_text("Thumbnail was removed Successfully 😋",quote=True)
 
