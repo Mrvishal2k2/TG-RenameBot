@@ -1,5 +1,5 @@
 {
-  "name": "TG-RenameBot",
+  "name": "DL-RenameBot",
   "description": "Telegram's best Rename Bot. Create your Fork now.",
   "keywords": [
     "telegram",
@@ -31,6 +31,10 @@
     },
     "OWNER_USERNAME": {
       "description": "(Optional)Owners username to use at start msg button..",
+      "required": false
+    },
+    "Update_Channel": {
+      "description": "(Optional)Channel of the user without @",
       "required": false
     },
     "CUSTOM_CAPTION": {
