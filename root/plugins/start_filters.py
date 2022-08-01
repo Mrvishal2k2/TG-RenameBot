@@ -24,7 +24,7 @@ async def start_msg(c,m):
                "Owner ", 
                url=f"https://t.me/{Config.OWNER_USERNAME}")
                 "Update_Channel",
-                url=f"https://t.me/DL_Bots_Update")
+               url=f"https://t.me/{Update_Channel}")
              ]]) , 
             disable_web_page_preview=True
       ) 
