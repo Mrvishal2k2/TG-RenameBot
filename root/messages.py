@@ -1,5 +1,5 @@
 class Translation(object):
-    START_TEXT = """**I'm a Rename and Convert Bot
+    START_TEXT = """**I'm a DL Rename and Convert Bot
 Just send me any media to change file name.
 Use /help command for more details **
 """
