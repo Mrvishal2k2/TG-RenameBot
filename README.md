@@ -14,7 +14,7 @@ Use this at your own risk as heroku suspended accounts on deploying due to overu
 
 #### BEST WAY (VPS)
 
-* This is just a demo of commands
+- This is just a demo of commands
 
 ```
 sudo apt install screen
@@ -26,47 +26,47 @@ virtualenv -p /usr/bin/python3 venv
 pip install -r requirements.txt
 python3 bot.py
 
-Done, now click ctrl+a,d to close screen 
+Done, now click ctrl+a,d to close screen
 Now full done
 
-To stop/remove screen 
+To stop/remove screen
 screen -r anynameforscreen
-then do 
+then do
 Then type ctrl+a and then k.
 It will ask y/n. Press y.
 ```
 
 ### Developer
 
-* Telegram [Mrvishal2k2](https://t.me/Mrvishal_2k2)
-* You can checkout my works at [BotDunia](https://t.me/BotDunia)
+- Telegram [Mrvishal2k2](https://t.me/Mrvishal_2k2)
+- You can checkout my works at [BotDunia](https://t.me/BotDunia)
 
 #### Required Variables
 
-* `TG_BOT_TOKEN`: Create a bot using [@BotFather](https://telegram.dog/BotFather), and get the Telegram API token.
-* `APP_ID`: Get this value from [telegram.org](https://my.telegram.org/apps)
- You can also get it from [UseTGXBot](https://t.me/UseTGXBot)
-* `API_HASH`: Get this value from [telegram.org](https://my.telegram.org/apps)
- You can also get it from [UseTGXBot](https://t.me/UseTGXBot)
-* `OWNER_ID`: Owner's Userid for log command
-* `OWNER_USERNAME`: (Not mandatory) Owner's Username without @
-* `CUSTOM_CAPTION`: Custom Caption to use after Filename in caption
+- `TG_BOT_TOKEN`: Create a bot using [@BotFather](https://telegram.dog/BotFather), and get the Telegram API token.
+- `APP_ID`: Get this value from [telegram.org](https://my.telegram.org/apps)
+  You can also get it from [UseTGXBot](https://t.me/UseTGXBot)
+- `API_HASH`: Get this value from [telegram.org](https://my.telegram.org/apps)
+  You can also get it from [UseTGXBot](https://t.me/UseTGXBot)
+- `OWNER_ID`: Owner's Userid for log command
+- `OWNER_USERNAME`: (Not mandatory) Owner's Username without @
+- `CUSTOM_CAPTION`: Custom Caption to use after Filename in caption
 
 ## Commands
 
 ```text
 start - start the bot
-help - ask help 
+help - ask help
 showthumb - shows saved thumbnail
 deletethumb - deletes saved thumbnail
-log - admin cmd 
+log - admin cmd
 ```
 
 ### Support
 
-* Join BotDunia channel
-</br>
-<a href="https://t.me/BotDunia"><img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white"></a>
+- Join BotDunia channel
+  </br>
+  <a href="https://t.me/BotDunia"><img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white"></a>
 
 ### Follow on
 
@@ -80,12 +80,12 @@ log - admin cmd
 
 ## All rights reserved
 
-* This is only for personal use !! Don't make a Bot channel Business with this on Telegram !!
-* Kang/Copy/Reuse of the code used here without permission and claiming to be self owning is not tolerated and will be taken actions against such acts.
-* Good to see if you give me credits if you are using the bot !!
-* Pull Requests are always accepted but shouldn't involve increasing complexity of deploying as this project mainly aims to be newbie friendly.
+- This is only for personal use !! Don't make a Bot channel Business with this on Telegram !!
+- Kang/Copy/Reuse of the code used here without permission and claiming to be self owning is not tolerated and will be taken actions against such acts.
+- Good to see if you give me credits if you are using the bot !!
+- Pull Requests are always accepted but shouldn't involve increasing complexity of deploying as this project mainly aims to be newbie friendly.
 
 ## Credits
 
-* Spechide as always for his opensources which motivated me to do "best" things ❤️
-* And also everyone in this Journey for Support
+- Spechide as always for his opensources which motivated me to do "best" things ❤️
+- And also everyone in this Journey for Support
