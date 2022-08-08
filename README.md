@@ -16,12 +16,24 @@ Use this at your own risk as heroku suspended accounts on deploying due to overu
 
 * This is just a demo of commands
 
-```python
+```
+sudo apt install screen
+screen -S anynameforscreen
+
 git clone https://github.com/mrvishal2k2/TG-RenameBot
 virtualenv -p /usr/bin/python3 venv
 . ./venv/bin/activate
 pip install -r requirements.txt
 python3 bot.py
+
+Done, now click ctrl+a,d to close screen 
+Now full done
+
+To stop/remove screen 
+screen -r anynameforscreen
+then do 
+Then type ctrl+a and then k.
+It will ask y/n. Press y.
 ```
 
 ### Developer
