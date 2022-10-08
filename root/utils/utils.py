@@ -1,14 +1,15 @@
 # This file all codes rights reserved by © Spechdie
 import logging
-logging.basicConfig(level=logging.DEBUG,
-                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
-
 import math
 import os
 import time
 import asyncio
 from shutil import copyfile
+
+logging.basicConfig(level=logging.DEBUG,
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
 
 async def progress_for_pyrogram(
     current,
