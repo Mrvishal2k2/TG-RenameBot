@@ -31,10 +31,14 @@ async def progress_for_pyrogram(
         elapsed_time = TimeFormatter(milliseconds=elapsed_time)
         estimated_total_time = TimeFormatter(milliseconds=estimated_total_time)
 
-        progress = "[{0}{1}] \n<b>◌Progress😉</b>:<code>〘 {2}% 〙</code>\n".format(
-            ''.join(["●" for i in range(math.floor(percentage / 5))]),
-            ''.join(["○" for i in range(20 - math.floor(percentage / 5))]),
-            round(percentage, 2))
+        progress = (
+            "[{0}{1}] \n<b>◌Progress😉</b>:<code>〘 {2}% 〙</code>\n".format(
+                ''.join(["●" for _ in range(math.floor(percentage / 5))]),
+                ''.join(["○" for _ in range(20 - math.floor(percentage / 5))]),
+                round(percentage, 2),
+            )
+        )
+
 
         tmp = progress + "<b>Done:</b> <code>〘{0}</code><b> of </b><code> {1}〙</code>\n<b>◌Speed🚀</b>:<code>〘 {2}/s 〙</code>\n<b>◌Time Left⏳</b>:<code>〘 {3} 〙</code>\n".format(
             humanbytes(current),
@@ -44,12 +48,7 @@ async def progress_for_pyrogram(
             estimated_total_time if estimated_total_time != '' else "0 s"
         )
         try:
-            await message.edit(
-                text="{}\n {}".format(
-                    ud_type,
-                    tmp
-                )
-            )
+            await message.edit(text=f"{ud_type}\n {tmp}")
         except:
             pass
 
@@ -65,19 +64,22 @@ def humanbytes(size):
     while size > power:
         size /= power
         n += 1
-    return str(round(size, 2)) + " " + Dic_powerN[n] + 'B'
+    return f"{str(round(size, 2))} {Dic_powerN[n]}B"
 
 
 def TimeFormatter(milliseconds: int) -> str:
-    seconds, milliseconds = divmod(int(milliseconds), 1000)
+    seconds, milliseconds = divmod(milliseconds, 1000)
     minutes, seconds = divmod(seconds, 60)
     hours, minutes = divmod(minutes, 60)
     days, hours = divmod(hours, 24)
-    tmp = ((str(days) + "d, ") if days else "") + \
-        ((str(hours) + "h, ") if hours else "") + \
-        ((str(minutes) + "m, ") if minutes else "") + \
-        ((str(seconds) + "s, ") if seconds else "") + \
-        ((str(milliseconds) + "ms, ") if milliseconds else "")
+    tmp = (
+        (f"{str(days)}d, " if days else "")
+        + (f"{str(hours)}h, " if hours else "")
+        + (f"{str(minutes)}m, " if minutes else "")
+        + (f"{str(seconds)}s, " if seconds else "")
+        + (f"{str(milliseconds)}ms, " if milliseconds else "")
+    )
+
     return tmp[:-2]
 
 
@@ -108,15 +110,10 @@ async def take_screen_shot(video_file, output_directory, ttl):
     stdout, stderr = await process.communicate()
     e_response = stderr.decode().strip()
     t_response = stdout.decode().strip()
-    if os.path.lexists(out_put_file_name):
-        return out_put_file_name
-    return None
+    return out_put_file_name if os.path.lexists(out_put_file_name) else None
 
 async def copy_file(input_file, output_dir):
-    output_file = os.path.join(
-        output_dir,
-        str(time.time()) + ".jpg"
-    )
+    output_file = os.path.join(output_dir, f"{str(time.time())}.jpg")
     # https://stackoverflow.com/a/123212/4723940
     copyfile(input_file, output_file)
     return output_file
