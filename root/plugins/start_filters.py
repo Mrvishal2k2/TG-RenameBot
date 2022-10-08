@@ -6,12 +6,13 @@ Dont kang !!!
 © Mrvishal2k2
 '''
 import os, logging
-log = logging.getLogger(__name__)
-
 from pyrogram import Client,filters
 from pyrogram.types import InlineKeyboardMarkup,InlineKeyboardButton
 from root.config import Config
 from root.messages import Translation
+
+log = logging.getLogger(__name__)
+
 
 @Client.on_message(filters.command("start"))
 async def start_msg(c,m):
