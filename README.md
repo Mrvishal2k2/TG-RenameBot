@@ -6,12 +6,6 @@ using [Pyrogram](https://docs.pyrogram.org)!!
 
 ## Installation
 
-### The Simple Way
-
-Use this at your own risk as heroku suspended accounts on deploying due to overuse.
-</br>
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
 #### BEST WAY (VPS)
 
 - This is just a demo of commands
