@@ -7,13 +7,6 @@ Dont kang !!!
 '''
 import os, time, asyncio, \
     requests, shutil, random, logging
-logging.basicConfig(
-    level=logging.DEBUG,
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-)
-logging.getLogger("pyrogram").setLevel(logging.WARNING)
-logger = logging.getLogger(__name__)
-
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from PIL import Image
@@ -21,6 +14,14 @@ from root.utils.utils import progress_for_pyrogram, humanbytes, take_screen_shot
 from root.config import Config
 from root.messages import Translation
 from pyrogram.errors  import FloodWait
+
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+)
+logging.getLogger("pyrogram").setLevel(logging.WARNING)
+logger = logging.getLogger(__name__)
+
 
 async def uploader(bot,file, update, msg,as_file=False):
 
