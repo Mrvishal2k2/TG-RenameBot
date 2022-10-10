@@ -69,16 +69,23 @@ def humanbytes(size):
 
 
 def TimeFormatter(milliseconds: int) -> str:
-    seconds, milliseconds = divmod(int(milliseconds), 1000)
-    minutes, seconds = divmod(seconds, 60)
-    hours, minutes = divmod(minutes, 60)
-    days, hours = divmod(hours, 24)
-    tmp = ((str(days) + "d, ") if days else "") + \
-        ((str(hours) + "h, ") if hours else "") + \
-        ((str(minutes) + "m, ") if minutes else "") + \
-        ((str(seconds) + "s, ") if seconds else "") + \
-        ((str(milliseconds) + "ms, ") if milliseconds else "")
-    return tmp[:-2]
+    result = ""
+    v_m = 0
+    remainder = milliseconds
+    r_ange_s = {
+        "d, ": (24 * 60 * 60 * 1000),
+        "h, ": (60 * 60 * 1000),
+        "m, ": (60 * 1000),
+        "s, ": (1 * 1000),
+        "ms ": 1,
+    }
+    for age in r_ange_s:
+        divisor = r_ange_s[age]
+        v_m, remainder = divmod(remainder, divisor)
+        v_m = int(v_m)
+        if v_m != 0:
+            result += f" {v_m} {age} "
+    return result
 
 
 ################# Other Utils
