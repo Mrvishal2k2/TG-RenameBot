@@ -31,10 +31,14 @@ async def progress_for_pyrogram(
         elapsed_time = TimeFormatter(milliseconds=elapsed_time)
         estimated_total_time = TimeFormatter(milliseconds=estimated_total_time)
 
-        progress = "[{0}{1}] \n<b>◌Progress😉</b>:<code>〘 {2}% 〙</code>\n".format(
-            ''.join(["●" for i in range(math.floor(percentage / 5))]),
-            ''.join(["○" for i in range(20 - math.floor(percentage / 5))]),
-            round(percentage, 2))
+        progress = (
+            "[{0}{1}] \n<b>◌Progress😉</b>:<code>〘 {2}% 〙</code>\n".format(
+                ''.join(["●" for _ in range(math.floor(percentage / 5))]),
+                ''.join(["○" for _ in range(20 - math.floor(percentage / 5))]),
+                round(percentage, 2),
+            )
+        )
+
 
         tmp = progress + "<b>Done:</b> <code>〘{0}</code><b> of </b><code> {1}〙</code>\n<b>◌Speed🚀</b>:<code>〘 {2}/s 〙</code>\n<b>◌Time Left⏳</b>:<code>〘 {3} 〙</code>\n".format(
             humanbytes(current),
@@ -44,12 +48,7 @@ async def progress_for_pyrogram(
             estimated_total_time if estimated_total_time != '' else "0 s"
         )
         try:
-            await message.edit(
-                text="{}\n {}".format(
-                    ud_type,
-                    tmp
-                )
-            )
+            await message.edit(text=f"{ud_type}\n {tmp}")
         except:
             pass
 
@@ -65,7 +64,7 @@ def humanbytes(size):
     while size > power:
         size /= power
         n += 1
-    return str(round(size, 2)) + " " + Dic_powerN[n] + 'B'
+    return f"{str(round(size, 2))} {Dic_powerN[n]}B"
 
 
 def TimeFormatter(milliseconds: int) -> str:
@@ -79,8 +78,7 @@ def TimeFormatter(milliseconds: int) -> str:
         "s, ": (1 * 1000),
         "ms ": 1,
     }
-    for age in r_ange_s:
-        divisor = r_ange_s[age]
+    for age, divisor in r_ange_s.items():
         v_m, remainder = divmod(remainder, divisor)
         v_m = int(v_m)
         if v_m != 0:
@@ -115,15 +113,10 @@ async def take_screen_shot(video_file, output_directory, ttl):
     stdout, stderr = await process.communicate()
     e_response = stderr.decode().strip()
     t_response = stdout.decode().strip()
-    if os.path.lexists(out_put_file_name):
-        return out_put_file_name
-    return None
+    return out_put_file_name if os.path.lexists(out_put_file_name) else None
 
 async def copy_file(input_file, output_dir):
-    output_file = os.path.join(
-        output_dir,
-        str(time.time()) + ".jpg"
-    )
+    output_file = os.path.join(output_dir, f"{str(time.time())}.jpg")
     # https://stackoverflow.com/a/123212/4723940
     copyfile(input_file, output_file)
     return output_file
