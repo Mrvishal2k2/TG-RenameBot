@@ -29,16 +29,20 @@ async def rename_filter(c,m):
     
     text += "Select the desired Option"
     button.append([InlineKeyboardButton("Rename as File", callback_data="rename_file")])
-  # Thanks to albert for mime_type suggestion 
+    # Thanks to albert for mime_type suggestion 
     if media.mime_type.startswith("video/"):
-    ## how the f the other formats can be uploaded as video 
+      # how the f the other formats can be uploaded as video 
       button.append([InlineKeyboardButton("Rename as Video",callback_data="rename_video")])
       button.append([InlineKeyboardButton("Convert to File",callback_data="convert_file")])
       button.append([InlineKeyboardButton("Convert to Video ",callback_data="convert_video")])
     button.append([InlineKeyboardButton("Cancel ❌",callback_data="cancel")])
  
-    markup = InlineKeyboardMarkup(button)
+
     try:
-      await m.reply_text(text,quote=True,reply_markup=markup,parse_mode="markdown",disable_web_page_preview=True)
+      await m.reply_text(text,quote=True,
+         reply_markup=InlineKeyboardMarkup(button),
+         disable_web_page_preview=True)
     except Exception as e:
+      await m.reply(f"Error\n {e}", True)
+
       log.error(str(e))
