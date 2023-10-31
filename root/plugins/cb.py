@@ -45,7 +45,7 @@ async def rep_rename_call(c, m):
 
 
 async def renamer(c,m,as_file=False):
-  bot_msg = await c.get_messages(m.chat.id, m.reply_to_message.id) 
+  bot_msg = await c.get_messages(m.chat.id, m.reply_to_message.id)
   todown = bot_msg.reply_to_message # msg with media
   new_f_name = m.text # new name
   media = todown.document or todown.video or todown.audio or todown.voice or todown.video_note or todown.animation
@@ -62,7 +62,7 @@ async def renamer(c,m,as_file=False):
       return await m.reply_text(text=f"Limits of telegram file name is 64 charecters only\nReduce some and try again.")
 
   d_msg = await m.reply_text(Translation.DOWNLOAD_MSG,True)
-  d_location = Config.DOWNLOAD_LOCATION + "/" + str(m.chat.id) + "/"
+  d_location = f"{Config.DOWNLOAD_LOCATION}/{str(m.chat.id)}/"
   d_time = time.time()
 
   try:
@@ -97,7 +97,8 @@ async def renamer(c,m,as_file=False):
     u_msg = await m.reply_text(Translation.UPLOAD_MSG,quote=True)
 
   # try to get thumb to use for later upload
-  thumb_image_path = Config.DOWNLOAD_LOCATION + "/thumb/" + str(m.from_user.id) + ".jpg"
+  thumb_image_path = (
+      f"{Config.DOWNLOAD_LOCATION}/thumb/{str(m.from_user.id)}.jpg")
   if not os.path.exists(thumb_image_path):
       mes = await thumb(m.from_user.id)
       if mes is not None:
@@ -134,7 +135,7 @@ async def convert_call(c,m):
 
   usr_msg = m.message.reply_to_message
   d_msg = await m.message.edit_text(Translation.DOWNLOAD_MSG)
-  d_location = Config.DOWNLOAD_LOCATION + "/" + str(m.from_user.id) + "/"
+  d_location = f"{Config.DOWNLOAD_LOCATION}/{str(m.from_user.id)}/"
   d_time = time.time()
 
   try:
@@ -167,7 +168,8 @@ async def convert_call(c,m):
     u_msg = await usr_msg.reply_text(Translation.UPLOAD_MSG,quote=True)
 
   # try to get thumb to use later while uploading..
-  thumb_image_path = Config.DOWNLOAD_LOCATION + "/thumb/" + str(m.from_user.id) + ".jpg"
+  thumb_image_path = (
+      f"{Config.DOWNLOAD_LOCATION}/thumb/{str(m.from_user.id)}.jpg")
   if not os.path.exists(thumb_image_path):
       mes = await thumb(m.from_user.id)
       if mes is not None:
