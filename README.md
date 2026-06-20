@@ -1,85 +1,73 @@
 # TG-RenameBot
 
-A better rename and convert bot with upload mode option
-and Auto detection written in [Python3](https://www.python.org)
-using [Pyrogram](https://docs.pyrogram.org)!!
+A Telegram bot to rename/convert media files, written in [Python 3](https://www.python.org) using [Pyrogram](https://docs.pyrogram.org).
 
-## Installation
+Send any file → pick an action via inline buttons (rename as file/video, convert between file and video) → bot downloads, renames or remuxes, and re-uploads with your saved custom thumbnail.
 
-#### BEST WAY (VPS)
+## Requirements
 
-- This is just a demo of commands
+- Python 3.10+
+- ffmpeg installed on the system
+- PostgreSQL database
 
-```
-sudo apt install screen
-screen -S anynameforscreen
+## Installation (VPS)
 
+```bash
 git clone https://github.com/mrvishal2k2/TG-RenameBot
-virtualenv -p /usr/bin/python3 venv
-. ./venv/bin/activate
+cd TG-RenameBot
 pip install -r requirements.txt
+# set environment variables (see below)
 python3 bot.py
-
-Done, now click ctrl+a,d to close screen
-Now full done
-
-To stop/remove screen
-screen -r anynameforscreen
-then do
-Then type ctrl+a and then k.
-It will ask y/n. Press y.
 ```
 
-### Developer
+## Docker
 
-- Telegram [Mrvishal2k2](https://t.me/Mrvishal_2k2)
-- You can checkout my works at [BotDunia](https://t.me/BotDunia)
+```bash
+docker build -t tg-renamebot .
+docker run --env-file .env tg-renamebot
+```
 
-#### Required Variables
+Copy `.env.example` to `.env` and fill in your values.
 
-- `TG_BOT_TOKEN`: Create a bot using [@BotFather](https://telegram.dog/BotFather), and get the Telegram API token.
-- `APP_ID`: Get this value from [telegram.org](https://my.telegram.org/apps)
-  You can also get it from [UseTGXBot](https://t.me/UseTGXBot)
-- `API_HASH`: Get this value from [telegram.org](https://my.telegram.org/apps)
-  You can also get it from [UseTGXBot](https://t.me/UseTGXBot)
-- `OWNER_ID`: Owner's Userid for log command
-- `OWNER_USERNAME`: (Not mandatory) Owner's Username without @
-- `CUSTOM_CAPTION`: Custom Caption to use after Filename in caption
+## Environment Variables
+
+**Required:**
+
+| Variable | Description |
+|---|---|
+| `APP_ID` | Telegram API ID from [my.telegram.org](https://my.telegram.org/apps) |
+| `API_HASH` | Telegram API hash from [my.telegram.org](https://my.telegram.org/apps) |
+| `TG_BOT_TOKEN` | Bot token from [@BotFather](https://t.me/BotFather) |
+| `OWNER_ID` | Space-separated user IDs with admin access |
+| `DATABASE_URL` | PostgreSQL connection URI |
+
+**Optional:**
+
+| Variable | Default | Description |
+|---|---|---|
+| `AUTH_USERS` | _(everyone)_ | Space-separated user IDs allowed to use the bot |
+| `DOWNLOAD_LOCATION` | `./Bot/DOWNLOADS` | Local path for temporary downloads |
+| `OWNER_USERNAME` | | Owner's Telegram username (without @) |
+| `CUSTOM_CAPTION` | | Text appended to file captions after the filename |
 
 ## Commands
 
-```text
-start - start the bot
-help - ask help
-showthumb - shows saved thumbnail
-deletethumb - deletes saved thumbnail
-log - admin cmd
+```
+/start        - start the bot
+/help         - usage instructions
+/showthumb    - show your saved custom thumbnail
+/deletethumb  - delete your saved custom thumbnail
+/log          - (owner only) get the log file
 ```
 
-### Support
+## Developer
 
-- Join BotDunia channel
-  </br>
-  <a href="https://t.me/BotDunia"><img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white"></a>
+- Telegram: [Mrvishal2k2](https://t.me/Mrvishal_2k2)
+- Channel: [BotDunia](https://t.me/BotDunia)
 
-### Follow on
-
-<p align="left">
+<a href="https://t.me/BotDunia"><img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white"></a>
 <a href="https://github.com/Mrvishal2k2"><img src="https://img.shields.io/badge/GitHub-Follow%20on%20GitHub-inactive.svg?logo=github"></a>
 
-</p>
-<p align="left">
-<a href="https://twitter.com/Mrvishal2k2"><img src="https://img.shields.io/badge/Twitter-Follow%20on%20Twitter-informational.svg?logo=twitter"></a>
-</p>
+## Contributing
 
-## All rights reserved
-
-- This is only for personal use !! Don't make a Bot channel Business with this on Telegram !!
-- Kang/Copy/Reuse of the code used here without permission and claiming to be self owning is not tolerated and will be taken actions against such acts.
-- Good to see if you give me credits if you are using the bot !!
-- Pull Requests are always accepted but shouldn't involve increasing complexity of deploying as this project mainly aims to be newbie friendly.
-
-## Credits
-
-- Spechide as always for his opensources which motivated me to do "best" things ❤️
-- And also everyone in this Journey for Support
+Pull requests are welcome. Keep deployment simple and newbie-friendly.

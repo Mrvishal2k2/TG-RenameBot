@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.installed.cfg
+lib/
+lib64/
+wheels/
+
+# Virtual envs
+.venv/
+venv/
+env/
+ENV/
+
+# Bot runtime
+bot/DOWNLOADS/
+*.session
+*.session*
+Log.txt
+settings.json
+
+# Env / secrets
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+graphify-out/
+CLAUDE.md
+AUDIT.md
+taste.md

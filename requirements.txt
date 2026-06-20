@@ -1,14 +1,11 @@
-# for functioning
-pyrogram==2.0.30
-tgcrypto
-requests
+# core
+pyrotgfork
+PyTgCrypto
 
-# to get thumb...
+# media metadata
 hachoir
-numpy
 Pillow
 
-# for database 😕
-sqlalchemy==1.3.20
+# database
+sqlalchemy>=2.0
 psycopg2-binary
-feedparser
